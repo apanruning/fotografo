@@ -1,6 +1,6 @@
 <?
 require_once('lib/slim/Slim.php');
-require_once('lib/TwigView.php');
+require_once('lib/MustacheView.php');
 require_once('lib/idiorm.php');
 require_once('utils.php');
 
@@ -8,9 +8,10 @@ ORM::configure('mysql:host=127.0.0.1;dbname=fotografo');
 ORM::configure('username', 'root');
 ORM::configure('password', 'mysql');
 
-Slim::init('TwigView');
+Slim::init('MustacheView');
 
 Slim::get('/', 'home');
+Slim::get('/test', 'test');
 Slim::get('/album/', 'album_list');
 Slim::post('/album/', 'album_add');
 Slim::get('/album/new', 'album_form');
@@ -21,6 +22,17 @@ Slim::get('/picture/new', 'picture_form');
 
 function home(){
     Slim::render('index.html');
+}
+
+function test(){
+    $albums = ORM::for_table('album')->find_many();
+
+    Slim::render(
+        'test.html',
+        array(
+            'albums' => $albums,
+        )
+    );
 }
 
 function album_list(){
