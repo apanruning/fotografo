@@ -29,13 +29,8 @@ li {
     overflow:hidden;
 }
 
-#nav {
-    position: absolute;
-    top: 20em;
+/* forms */
+label {
+    display:block;
 }
-#nav a {
-    color: #FFF;
-}
-
-#
 

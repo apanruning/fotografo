@@ -16,17 +16,18 @@
             <li><a href="/vaivendo">Vaivendo</a></li>
             <li><a href="/autor">Autor</a></li>
             <li><a href="/album">Galerias</a></li>
-            <ul>
-                <li><a href="/album/1">Morador</li>
-                <li><a href="/album/2">Album 1</li>
-                <li><a href="/album/3">Album 2</li>
-                <li><a href="/album/4">Album 3</li>
-            </ul>
             <li><a href="/contato">Contato</a></li>
         </ul>
         </header>
         <section>
-        <h1>Simon says: {{what}}</h1>
+        {% block content %}
+            {% for album in albums %}
+            <h1>{{album.name}}</h1>
+            <p>{{album.description}}</p>
+            {% endfor %}
+
+        {% endblock %}
+
         </section>
         <footer><a href="http://potajecreativo.com/">potaje</a></footer>
     </div>

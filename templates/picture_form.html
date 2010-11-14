@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+<form action="/category/" method="post">
+    <p><label for="name">Name</label> <input type="text" name="name" value=""/></p>
+    <p><label for="categories">Category</label> <select name="parent">
+        <option value="">Select a category</option>
+        {% for cate in categories %}
+        <option value="{{cate|lower}}">{{cate}}</option>
+        {% endfor %}
+
+        
+    </select>
+    </p>
+    <p><input type="submit" value="Save" /></p>
+</form>
+{% endblock %}

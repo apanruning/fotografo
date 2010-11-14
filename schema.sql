@@ -1,25 +1,15 @@
-BEGIN;
-CREATE TABLE "foto" (
-    "id" integer NOT NULL PRIMARY KEY,
-    "image" varchar(100) NOT NULL,
-    "album_id" integer NOT NULL
+BEGIN;CREATE TABLE `modelbuilder_picture` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `image` varchar(100) NOT NULL,
+    `album_id` integer NOT NULL
 )
 ;
-CREATE TABLE "category" (
-    "id" integer NOT NULL PRIMARY KEY,
-    "slug" varchar(50) NOT NULL UNIQUE,
-    "name" varchar(60) NOT NULL,
-    "parent_id" integer
+CREATE TABLE `modelbuilder_album` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` varchar(60) NOT NULL,
+    `slug` varchar(50) NOT NULL UNIQUE,
+    `description` longtext NOT NULL,
+    `created` datetime NOT NULL
 )
 ;
-CREATE TABLE "album" (
-    "id" integer NOT NULL PRIMARY KEY,
-    "slug" varchar(50) NOT NULL UNIQUE,
-    "name" varchar(60) NOT NULL,
-    "description" text NOT NULL,
-    "category_id" integer NOT NULL REFERENCES "category" ("id"),
-    "created" datetime NOT NULL
-)
-;
-COMMIT;
-
+ALTER TABLE `modelbuilder_picture` ADD CONSTRAINT `album_id_refs_id_ccd3755a` FOREIGN KEY (`album_id`) REFERENCES `modelbuilder_album` (`id`);COMMIT;
