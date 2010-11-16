@@ -20,14 +20,10 @@
         </ul>
         </header>
         <section>
-        {% block content %}
-            {% for album in albums %}
-            <h1>{{album.name}}</h1>
-            <p>{{album.description}}</p>
-            {% endfor %}
-
-        {% endblock %}
-
+        {{#albums}}
+        <h1>{{name}}</h1>
+        <p>{{description}}</p>
+        {{/albums}}
         </section>
         <footer><a href="http://potajecreativo.com/">potaje</a></footer>
     </div>
