@@ -23,10 +23,10 @@ class Mustache {
 	 * @see self::_throwsException()
 	 */
 	protected $_throwsExceptions = array(
-		MustacheException::UNKNOWN_VARIABLE         => true,
+		MustacheException::UNKNOWN_VARIABLE         => false,
 		MustacheException::UNCLOSED_SECTION         => true,
 		MustacheException::UNEXPECTED_CLOSE_SECTION => true,
-		MustacheException::UNKNOWN_PARTIAL          => true,
+		MustacheException::UNKNOWN_PARTIAL          => false,
 		MustacheException::UNKNOWN_PRAGMA           => true,
 	);
 
