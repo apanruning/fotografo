@@ -64,7 +64,7 @@ footer, .push {
 #logo a {
     text-decoration: none;
     display:block;
-    background:url(/media/img/logo.png) no-repeat;
+    background:url(/media/logo.png) no-repeat;
     text-indent: -9999px;
     height:2em;
     width: 10em;
@@ -78,13 +78,13 @@ footer, .push {
     margin: 0 1em;
     padding: 0;
 }
-#nav a 
+#nav a {
     display: block;
     text-transform: lowercase;
     font-weight: bold;
 
 }
-#nav ul{
+#nav ul {
     float:none;
     padding:0;
 }

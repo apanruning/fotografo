@@ -4,10 +4,21 @@
     <meta charset=utf-8" />
     <title>Vaivendo - imagens {{title}}</title>
     <link rel="stylesheet" href="/media/style.css" type="text/css" media="screen" />
+    <script type="text/javascript" language="javascript" src="/media/jquery.js"></script>
     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
         </script>
     <![endif]-->
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function(){
+            $('#add-picture-field').click(function(){
+                file_input = $('input[type="file"]:first').clone();
+                $('#pictures').append(file_input);
+                $('#pictures').append($('<br />'));
+                return false;
+            })
+        })
+    </script>
 </head>
 <body>
 <section>
@@ -16,10 +27,11 @@
         <p><label for="description">Description</label><textarea name="description" rows="8" cols="40"></textarea></p>
         <dl>
             <dt><label for="picture[]">Pictures:</label></dt>
+            <dd id="pictures">
+                <input type="file" name="picture[]" value="" /><br />
+            </dd>
             <dd>
-                <input type="file" name="picture[]" value=""/><br />
-                <input type="file" name="picture[]" value=""/><br />
-                <input type="file" name="picture[]" value=""/>
+            <a href="#" id="add-picture-field">Add another</a>
             </dd>
         </dl>
         <p><input type="submit" value="Save" /></p>
