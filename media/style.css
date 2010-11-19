@@ -3,7 +3,7 @@ html, body {
 
 }
 body{
-    font: 10px 'Calibri', 'Droid Sans', 'Trebuchet MS', sans-serif;
+    font: 13px 'Calibri', 'Droid Sans', 'Trebuchet MS', sans-serif;
     margin: 0;
 }
 header, section, footer {
@@ -22,11 +22,61 @@ li {
     margin: 0;
     padding: 0;
 }
+header {
+    overflow: hidden;
+    background: #333;
+}
+header a {
+    text-decoration: none;
+    color: #FFF;
+}
+section {
+}
+footer {
+    background: #333;
+    padding:0.5em 1em ;
+    text-align:right;
+}
+footer a {
+    text-decoration: none;
+    color: #FFF;
+}
+footer, .push {
+    height: 1em;
+}
+
+.push{
+    display: block;
+    clear: both;
+}
 
 #wrapper {
     height:100%;
-    width:100%;
     overflow:hidden;
+    margin-bottom: -2em;
+}
+
+#logo {
+    float: left;
+    padding: 0 1em;    
+}
+#nav {
+    float: right;
+    width: 30em;
+    padding:0;
+}
+#nav li {
+    float: left;
+    margin: 0 1em;
+    padding: 0;
+}
+#nav a {
+    display: block;
+    padding:1.25em 1em; 
+
+}
+#nav a:hover {
+    background: #EEE;
 }
 
 /* forms */

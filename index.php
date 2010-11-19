@@ -10,26 +10,39 @@ ORM::configure('password', 'mysql');
 
 Slim::init('TwigView');
 
+Slim::config('log', true);
+
 Slim::get('/', 'home');
-Slim::get('/album/', 'album_list');
+Slim::get('/album/(:id)', 'album_list');
 Slim::post('/album/', 'album_add');
 Slim::get('/album/new', 'album_form');
 Slim::post('/picture/', 'picture_add');
 Slim::get('/picture/new', 'picture_form');
 
-
-
 function home(){
-    Slim::render('index.html');
-}
-
-function album_list(){
     $albums = ORM::for_table('album')->find_many();
+    Slim::render(
+        'index.html',
+        array(
+            'albums' => $albums,
+        )
+    );
+}
+function album_list($id=null){
+    $albums = ORM::for_table('album')->find_many();
+    Slim::log(ORM::for_table('album')->count().' records in album');
+    if ($id){
+        $album = ORM::for_table('album')->find_one($id);
+        Slim::log('found item: '.$album->name);
+    }else {
+        $album = null;
+    }
 
     Slim::render( 
         'index.html',
         array(
             'albums' => $albums,
+            'album' => $album,
         )
     );
 }
