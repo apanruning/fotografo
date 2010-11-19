@@ -1,8 +1,28 @@
-{{> top}}
-{% block content %}
-<form action="/album/" method="post">
-    <p><label for="name">Name</label> <input type="text" name="name" value=""/></p>
-    <p><label for="description">Description</label> <textarea name="description" rows="8" cols="40"></textarea></p>
-    <p><input type="submit" value="Save" /></p>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset=utf-8" />
+    <title>Vaivendo - imagens {{title}}</title>
+    <link rel="stylesheet" href="/media/style.css" type="text/css" media="screen" />
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+        </script>
+    <![endif]-->
+</head>
+<body>
+<section>
+    <form action="/album/" enctype="multipart/form-data" method="post">
+        <p><label for="name">Name</label><input type="text" name="name" value=""/></p>
+        <p><label for="description">Description</label><textarea name="description" rows="8" cols="40"></textarea></p>
+        <dl>
+            <dt><label for="picture[]">Pictures:</label></dt>
+            <dd>
+                <input type="file" name="picture[]" value=""/><br />
+                <input type="file" name="picture[]" value=""/><br />
+                <input type="file" name="picture[]" value=""/>
+            </dd>
+        </dl>
+        <p><input type="submit" value="Save" /></p>
+    </form>
+</section>
+</body>

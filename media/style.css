@@ -3,7 +3,7 @@ html, body {
 
 }
 body{
-    font: 10px 'Calibri', 'Droid Sans', 'Trebuchet MS', sans-serif;
+    font: 13px 'Calibri', 'Droid Sans', 'Trebuchet MS', sans-serif;
     margin: 0;
 }
 header, section, footer {
@@ -22,11 +22,77 @@ li {
     margin: 0;
     padding: 0;
 }
+header {
+    overflow: hidden;
+    background: #333;
+    padding:1em 0;
+}
+header a {
+    color: #FFF;
+}
+section {
+    padding:1em;
+}
+footer {
+    background: #333;
+    padding:0.5em 1em ;
+    text-align:right;
+}
+footer a {
+    text-decoration: none;
+    color: #FFF;
+}
+footer, .push {
+    height: 1em;
+}
+
+.push{
+    display: block;
+    clear: both;
+}
 
 #wrapper {
     height:100%;
-    width:100%;
-    overflow:hidden;
+    overflow:auto;
+    margin-bottom: -2em;
+}
+
+#logo {
+    float: left;
+    padding: 0 1em;    
+}
+#logo a {
+    text-decoration: none;
+    display:block;
+    background:url(/media/img/logo.png) no-repeat;
+    text-indent: -9999px;
+    height:2em;
+    width: 10em;
+}
+#nav {
+    float: left;
+    padding:0;
+}
+#nav li {
+    float: left;
+    margin: 0 1em;
+    padding: 0;
+}
+#nav a 
+    display: block;
+    text-transform: lowercase;
+    font-weight: bold;
+
+}
+#nav ul{
+    float:none;
+    padding:0;
+}
+#nav ul li {
+    padding:0;
+    float:none;
+}
+#nav a:hover {
 }
 
 /* forms */
