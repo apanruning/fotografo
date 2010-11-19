@@ -1,6 +1,7 @@
 <?
 require_once('lib/slim/Slim.php');
 require_once('lib/MustacheView.php');
+require_once('lib/ImageView.php');
 require_once('lib/idiorm.php');
 require_once('utils.php');
 
@@ -12,14 +13,13 @@ Slim::init('MustacheView');
 
 Slim::config('log', true);
 
+
 Slim::get('/', 'home');
 Slim::get('/album/new', 'album_form');
 Slim::get('/album/(:id)', 'album_list');
 Slim::delete('/album/(:id)', 'album_delete');
 Slim::post('/album/', 'album_add');
-
-Slim::post('/picture/', 'picture_add');
-Slim::get('/picture/new', 'picture_form');
+Slim::get('/picture/:id(/:width)(/:height)', 'show_picture');
 
 function home(){
     $albums = ORM::for_table('album')->find_many();
@@ -39,8 +39,9 @@ function album_list($id=null){
     if ($id){
         $album = ORM::for_table('album')->find_one($id);
     }else {
-        $album = $albums[0];
+        $album = $albums[array_rand($albums)];
     }
+    Slim::log('picked: #'.$album->id.' '.$album->name);
     $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
     Slim::render( 
         'index.html',
@@ -84,32 +85,13 @@ function album_add(){
             
         }
     }
-    echo $_FILES;
+    Slim::redirect('/album/name', 301);
 }
 
-function picture_form(){
-    $pictures = ORM::for_table('picture')->find_many();
-
-    Slim::render( 
-        'picture_form.html',
-        array(
-            'pictures' => $pictures,
-        )
-    );
+function show_picture($id, $width=null, $height=null){
+    $picture = ORM::for_table('picture')->find_one($id);
+    ImageView::thumb($picture->image, $width, $height);
 }
-
-function picture_add(){
-    $pictures = ORM::for_table('picture')->create();
-    $pictures->image = $_POST['image'];
-    $pictures->slug = slugify($_POST['name']);
-    $pictures->save();
-    Slim::redirect( 
-        '/picture/',
-        201
-    );
-}
-
 
 Slim::run();
-
 ?>
