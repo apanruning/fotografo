@@ -7,14 +7,19 @@
     <script type="text/javascript" language="javascript" src="/media/jquery.js"></script>
     <script type="text/javascript" language="javascript">
         var picture_list = {};
+        var total_width = 0;
         $(document).ready(function(){
+            $('#display img').each(function(){
+                total_width += this.width + 20;
+            })
+            $('#display').css('width', total_width);
             $('#display img:first').show()
                                    .toggleClass('selected');
             $('#pictures a').click(function(){
                 $('#display img.selected').hide()
                                           .toggleClass('selected');
                 target = $(this).attr('href');
-                $(target).show()
+                $(target).show() 
                          .toggleClass('selected');
                 return false;
             })
@@ -29,7 +34,7 @@
 <body>
     <div id="display">
         {{#pictures}}
-        <img src="/picture/{{id}}?width=1300&height=1200" alt="{{id}}" id="{{id}}" width="100%" />
+        <img src="/picture/{{id}}?height=700" alt="{{id}}" id="{{id}}" height="100%" />
         {{/pictures}}
     </div>
     <header>

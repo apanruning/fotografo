@@ -15,7 +15,11 @@ Slim::config('log', true);
 
 
 Slim::get('/', 'album_list');
-Slim::get('/album/new', 'album_form');
+Slim::get('/autor/', 'bio');
+Slim::get('/vaivendo/', 'shop');
+Slim::get('/contato/', 'contact_form');
+Slim::post('/contato/', 'contact_send');
+Slim::get('/album/edit(:id)', 'album_form');
 Slim::get('/album/(:id)', 'album_list');
 Slim::delete('/album/(:id)', 'album_delete');
 Slim::post('/album/', 'album_add');
@@ -46,13 +50,15 @@ function album_list($id=null){
     );
 }
 
-function album_form(){
+function album_form($id=null){
     $albums = ORM::for_table('album')->find_many();
-
+    $album = ORM::for_table('album')->find_one($id);
+        
     Slim::render( 
         'album_form.html',
         array(
             'albums' => $albums,
+            'album' => $album,
         )
     );
 }

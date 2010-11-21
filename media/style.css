@@ -3,6 +3,8 @@ html, body {
 
 }
 body{
+    background: #FFF;
+    color: 333;
     font: 11px 'Calibri', 'Droid Sans', 'Trebuchet MS', sans-serif;
     margin: 0;
     position: relative;
@@ -33,6 +35,8 @@ header a {
 }
 section {
     padding:1em;
+    background: #000;
+    color: #FFF;
 }
 footer {
     position: fixed;
@@ -80,10 +84,7 @@ footer a {
     float:none;
     padding:0;
     position: absolute;
-}
-#nav ul li {
-    padding: 0;
-    float: none;
+    top: 2em;
 }
 #nav a:hover {
 }
@@ -92,12 +93,14 @@ footer a {
     top: 0;
     left: 0;
     z-index: -5;
-    width: 100%;
     height:100%;
     overflow: hidden;
+    text-algin: center;
+    background: #000;
 }
 #display img{
-    display: none;
+    float: left;
+    margin-right: 2em;
 }
 #pictures {
     overflow: hidden;
@@ -114,6 +117,9 @@ footer a {
     display:block;
 }
 /* forms */
+form {
+    padding: 1em;
+}
 label {
     display:block;
 }
