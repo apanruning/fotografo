@@ -17,17 +17,29 @@ Slim::config('log', true);
 Slim::get('/', 'album_list');
 Slim::get('/autor/', 'bio');
 Slim::get('/vaivendo/', 'shop');
-Slim::get('/contato/', 'contact_form');
+Slim::get('/contato/', 'contact');
 Slim::post('/contato/', 'contact_send');
-Slim::get('/album/edit(:id)', 'album_form');
+Slim::get('/album/edit(/:id)', 'album_form');
 Slim::get('/album/(:id)', 'album_list');
 Slim::delete('/album/(:id)', 'album_delete');
 Slim::post('/album/', 'album_add');
 Slim::get('/picture/:id*', 'show_picture');
 
+function contact(){
+    $albums = ORM::for_table('album')->find_many();
+    Slim::render( 
+        'index.html',
+        array(
+            'albums' => $albums,
+            'contact' => true,
+        )
+    );
+}
+
 function album_delete($id){
     Slim::log('Trying to delete: '.$id);
 }
+
 function album_list($id=null){
     $albums = ORM::for_table('album')->find_many();
     if ($id){
@@ -36,29 +48,32 @@ function album_list($id=null){
         $album = $albums[array_rand($albums)];
     }
     
-    Slim::log('picked: #'.$album->id.' '.$album->name);
     $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
-    $first_picture = $pictures[0];
     Slim::render( 
         'index.html',
         array(
             'albums' => $albums,
             'album' => $album,
             'pictures' => $pictures,
-            'first_picture' => $first_picture->id,
         )
     );
 }
 
 function album_form($id=null){
     $albums = ORM::for_table('album')->find_many();
-    $album = ORM::for_table('album')->find_one($id);
-        
+    if ($id){
+        $album = ORM::for_table('album')->find_one($id);
+        $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    } else {
+        $album = null;
+        $pictures = null;
+    }
     Slim::render( 
         'album_form.html',
         array(
             'albums' => $albums,
             'album' => $album,
+            'pictures' => $pictures,
         )
     );
 }

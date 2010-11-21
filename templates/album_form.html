@@ -22,13 +22,15 @@
     </script>
 </head>
 <body>
+
 <form action="/album/" enctype="multipart/form-data" method="post">
-    <p><label for="name">Name</label><input type="text" name="name" value="{{album.name}}"/></p>
-    <p><label for="description">Description</label><textarea name="description" rows="8" cols="40"></textarea></p>
+    <p><label for="name">Name</label><input type="text" name="name" value="{{#album}}{{name}}{{/album}}"/></p>
+    <p><label for="description">Description</label><textarea name="description" rows="8" cols="40">{{#album}}{{description}}{{/album}}</textarea></p>
     <dl>
         <dt><label for="picture[]">Pictures:</label></dt>
         <dd id="pictures">
-            <input type="file" name="picture[]" value="" /><br />
+            {{#pictures}}<input type="file" name="picture[]" value="{{image}}" /><br />{{/pictures}}
+            {{^pictures}}<input type="file" name="picture[]" value="{{image}}" /><br />{{/pictures}}
         </dd>
         <dd>
         <a href="#" id="add-picture-field">Add another</a>
@@ -36,4 +38,5 @@
     </dl>
     <p><input type="submit" value="Save" /></p>
 </form>
+
 </body>

@@ -9,10 +9,12 @@
         var picture_list = {};
         var total_width = 0;
         $(document).ready(function(){
+            /*
             $('#display img').each(function(){
                 total_width += this.width + 20;
             })
             $('#display').css('width', total_width);
+
             $('#display img:first').show()
                                    .toggleClass('selected');
             $('#pictures a').click(function(){
@@ -23,6 +25,7 @@
                          .toggleClass('selected');
                 return false;
             })
+            */
         })
     </script>
     
@@ -34,7 +37,7 @@
 <body>
     <div id="display">
         {{#pictures}}
-        <img src="/picture/{{id}}?height=700" alt="{{id}}" id="{{id}}" height="100%" />
+        <img src="/picture/{{id}}?height=700" alt="{{id}}" id="{{id}}" width="100%" />
         {{/pictures}}
     </div>
     <header>
@@ -48,17 +51,19 @@
         <li><a href="/contato">Contato</a></li>
     </ul>
     </header>
+    {{#home}}
+    
+    {{/home}}
     {{#album}}
     <section>
         <h1>{{name}}</h1>
         <p>{{description}}</p>
-
     </section>
     <footer>        
         <ul id="pictures">
             {{#pictures}}
             <li>
-                <a href="#{{id}}" ><img src="/picture/{{id}}?height=30" alt="{{id}} - {{name}}" /></a>
+                <a href="#{{id}}" ><img src="/picture/{{id}}?height=25" alt="{{id}} - {{name}}" /></a>
             </li>
             {{/pictures}}
         </ul>
