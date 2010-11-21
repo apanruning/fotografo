@@ -14,41 +14,34 @@ Slim::init('MustacheView');
 Slim::config('log', true);
 
 
-Slim::get('/', 'home');
+Slim::get('/', 'album_list');
 Slim::get('/album/new', 'album_form');
 Slim::get('/album/(:id)', 'album_list');
 Slim::delete('/album/(:id)', 'album_delete');
 Slim::post('/album/', 'album_add');
-Slim::get('/picture/:id(/:width)(/:height)', 'show_picture');
+Slim::get('/picture/:id*', 'show_picture');
 
-function home(){
-    $albums = ORM::for_table('album')->find_many();
-    Slim::render(
-        'index.html',
-        array(
-            'albums' => $albums,
-        )
-    );
-}
 function album_delete($id){
     Slim::log('Trying to delete: '.$id);
 }
 function album_list($id=null){
     $albums = ORM::for_table('album')->find_many();
-    Slim::log(ORM::for_table('album')->count().' records in album');
     if ($id){
         $album = ORM::for_table('album')->find_one($id);
-    }else {
+    } else {
         $album = $albums[array_rand($albums)];
     }
+    
     Slim::log('picked: #'.$album->id.' '.$album->name);
     $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    $first_picture = $pictures[0];
     Slim::render( 
         'index.html',
         array(
             'albums' => $albums,
             'album' => $album,
             'pictures' => $pictures,
+            'first_picture' => $first_picture->id,
         )
     );
 }
@@ -85,10 +78,12 @@ function album_add(){
             
         }
     }
-    Slim::redirect('/album/name', 301);
+    Slim::redirect('/album/new', 301);
 }
 
-function show_picture($id, $width=null, $height=null){
+function show_picture($id){
+    $width = Slim::request()->get('width');
+    $height = Slim::request()->get('height');
     $picture = ORM::for_table('picture')->find_one($id);
     ImageView::thumb($picture->image, $width, $height);
 }

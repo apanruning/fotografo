@@ -13,6 +13,7 @@
         $(document).ready(function(){
             $('#add-picture-field').click(function(){
                 file_input = $('input[type="file"]:first').clone();
+                $(file_input).val('');
                 $('#pictures').append(file_input);
                 $('#pictures').append($('<br />'));
                 return false;
