@@ -14,7 +14,7 @@ class ImageView extends View{
 		return $color;
 	}
 	
-    public static function thumb($file,$dimx,$dimy) {
+    public static function thumb($file,$dimx=null,$dimy=null) {
 		preg_match('/\.(gif|jp[e]*g|png)$/',$file,$ext);
 		$ext[1]=str_replace('jpg','jpeg',$ext[1]);
 		$img=imagecreatefromstring(file_get_contents($file));
@@ -23,6 +23,8 @@ class ImageView extends View{
 		$oldy=imagesy($img);
 		// Adjust dimensions; retain aspect ratio
 		$ratio=$oldx/$oldy;
+		$dimx= is_null($dimx) ? $oldx : $dimx;
+		$dimy= is_null($dimy) ? $oldy : $dimy;
 		if ($dimx<=$oldx && $dimx/$ratio<=$dimy)
 			// Adjust height
 			$dimy=$dimx/$ratio;
