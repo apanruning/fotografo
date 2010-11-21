@@ -25,16 +25,12 @@ class ImageView extends View{
 		$ratio=$oldx/$oldy;
 		$dimx= is_null($dimx) ? $oldx : $dimx;
 		$dimy= is_null($dimy) ? $oldy : $dimy;
-		if ($dimx<=$oldx && $dimx/$ratio<=$dimy)
+		if ($dimx<=$oldx && $dimx/$ratio<=$dimy){
 			// Adjust height
 			$dimy=$dimx/$ratio;
-		elseif ($dimy<=$oldy && $dimy*$ratio<=$dimx)
+		} elseif ($dimy<=$oldy && $dimy*$ratio<=$dimx) {
 			// Adjust width
 			$dimx=$dimy*$ratio;
-		else {
-			// Retain size if dimensions exceed original image
-			$dimx=$oldx;
-			$dimy=$oldy;
 		}
 		// Create blank image
 		$tmp=imagecreatetruecolor($dimx,$dimy);

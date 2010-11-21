@@ -4,10 +4,11 @@ require_once('lib/MustacheView.php');
 require_once('lib/ImageView.php');
 require_once('lib/idiorm.php');
 require_once('utils.php');
+require_once('config.php');
 
-ORM::configure('mysql:host=127.0.0.1;dbname=fotografo');
-ORM::configure('username', 'root');
-ORM::configure('password', 'mysql');
+ORM::configure('mysql:host=127.0.0.1;dbname='.$DATABASE_NAME);
+ORM::configure('username', $DATABASE_USER);
+ORM::configure('password', $DATABASE_PASS);
 
 Slim::init('MustacheView');
 
@@ -61,13 +62,8 @@ function album_list($id=null){
 
 function album_form($id=null){
     $albums = ORM::for_table('album')->find_many();
-    if ($id){
-        $album = ORM::for_table('album')->find_one($id);
-        $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
-    } else {
-        $album = null;
-        $pictures = null;
-    }
+    $album = ORM::for_table('album')->find_one($id);
+    $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
     Slim::render( 
         'album_form.html',
         array(
