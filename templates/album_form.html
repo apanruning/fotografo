@@ -13,9 +13,10 @@
         $(document).ready(function(){
             $('#add-picture-field').click(function(){
                 file_input = $('input[type="file"]:first').clone();
-                $(file_input).val('');
-                $('#pictures').append(file_input);
-                $('#pictures').append($('<br />'));
+                $('#pictures').append(file_input)
+                              .append($('<br />'));
+                $(file_input).val('')
+                             .focus();
                 return false;
             })
         })
@@ -23,8 +24,9 @@
 </head>
 <body>
 
-<form action="/album/" enctype="multipart/form-data" method="post">
+<form action="/album/{{#album}}?id={{id}}{{/album}}" enctype="multipart/form-data" method="post">
     <p><label for="name">Name</label><input type="text" name="name" value="{{#album}}{{name}}{{/album}}"/></p>
+        <p><label for="section">Section</label><input type="text" name="section" value="{{#album}}{{section}}{{/album}}"/></p>
     <p><label for="description">Description</label><textarea name="description" rows="8" cols="40">{{#album}}{{description}}{{/album}}</textarea></p>
     <dl>
         <dt><label for="picture[]">Pictures:</label></dt>

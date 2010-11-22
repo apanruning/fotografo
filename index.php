@@ -22,7 +22,7 @@ Slim::get('/contato/', 'contact');
 Slim::post('/contato/', 'contact_send');
 Slim::get('/album/edit(/:id)', 'album_form');
 Slim::get('/album/(:id)', 'album_list');
-Slim::delete('/album/(:id)', 'album_delete');
+Slim::delete('/album/:id', 'album_delete');
 Slim::post('/album/', 'album_add');
 Slim::get('/picture/:id*', 'show_picture');
 
@@ -42,7 +42,7 @@ function album_delete($id){
 }
 
 function album_list($id=null){
-    $albums = ORM::for_table('album')->find_many();
+    $albums = ORM::for_table('album')->where('section','album')->find_many();
     if ($id){
         $album = ORM::for_table('album')->find_one($id);
     } else {
@@ -62,8 +62,13 @@ function album_list($id=null){
 
 function album_form($id=null){
     $albums = ORM::for_table('album')->find_many();
-    $album = ORM::for_table('album')->find_one($id);
-    $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    if ($id){
+        $album = ORM::for_table('album')->find_one($id);
+        $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    } else {
+        $album = null;
+        $pictures = null;
+    }
     Slim::render( 
         'album_form.html',
         array(
@@ -78,6 +83,7 @@ function album_add(){
     $params = Slim::request()->post();
     $album = ORM::for_table('album')->create();
     $album->name = $params['name'];
+    $album->section = $params['section'];
     $album->slug = slugify($params['name']);
     $album->description = $params['description'];
     $album->created = '';
@@ -86,13 +92,14 @@ function album_add(){
         if ($error == UPLOAD_ERR_OK) {
             $tmp_name = $_FILES['picture']['tmp_name'][$key];
             $name = $_FILES['picture']['name'][$key];
-            move_uploaded_file($tmp_name, "pictures/$name");
-            Slim::log('moved file to: pictures/'.$name);
-            $picture = ORM::for_table('picture')->create();
-            $picture->image = 'pictures/'.$name;
-            $picture->album_id = $album->id;
-            $picture->save();
-            
+            if (!file_exists('pictures/'.$name)){
+                move_uploaded_file($tmp_name, "pictures/$name");
+                Slim::log('moved file to: pictures/'.$name);
+                $picture = ORM::for_table('picture')->create();
+                $picture->image = 'pictures/'.$name;
+                $picture->album_id = $album->id;
+                $picture->save();
+            }
         }
     }
     Slim::redirect('/album/new', 301);

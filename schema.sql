@@ -9,6 +9,8 @@ CREATE TABLE `album` (
     `name` varchar(60) NOT NULL,
     `slug` varchar(50) NOT NULL UNIQUE,
     `description` longtext NOT NULL,
+    `section` varchar(50) NULL,
     `created` datetime NOT NULL
 );
-ALTER TABLE `picture` ADD CONSTRAINT `album_id_refs_id_ccd3755a` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`);COMMIT;
+ALTER TABLE `picture` ADD CONSTRAINT `album_id_refs_id_ccd3755a` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`);
+COMMIT;
