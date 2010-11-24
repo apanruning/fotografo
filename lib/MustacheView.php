@@ -60,8 +60,16 @@ class MustacheView extends View {
 	public function render( $template ) {
 		require_once self::$mustacheDirectory . '/Mustache.php';
 		$m = new Mustache();
-		$contents = file_get_contents($this->templatesDirectory() . $template);
-		echo $m->render($contents, $this->data);
+		
+		$template_dir = $this->templatesDirectory();
+		$layout = file_get_contents($template_dir. 'layout.html');
+		$content = array('content' => file_get_contents($template_dir.$template));
+
+		echo $m->render(
+		    $layout, 
+		    $this->data, 
+		    $content
+	    );
 	}
 
 }

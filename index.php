@@ -15,45 +15,44 @@ Slim::init('MustacheView');
 Slim::config('log', true);
 
 
-Slim::get('/', 'album_list');
+Slim::get('/', 'home');
 Slim::get('/autor/', 'bio');
 Slim::get('/vaivendo/', 'shop');
 Slim::get('/contato/', 'contact');
 Slim::post('/contato/', 'contact_send');
-Slim::get('/album/edit(/:id)', 'album_form');
+Slim::get('/album/edit/(:id)', 'album_form');
 Slim::get('/album/(:id)', 'album_list');
 Slim::delete('/album/:id', 'album_delete');
 Slim::post('/album/', 'album_add');
 Slim::get('/picture/:id*', 'show_picture');
 
-Slim::notFound('custom_not_found_callback');
-
-
-function contact(){
-    Slim::render('index.html');
-}
-
-
-function custom_not_found_callback() {
-    Slim::render('404.html');
-}
-
+Slim::notFound('nada');
 
 function album_delete($id){
     Slim::log('Trying to delete: '.$id);
+
+}
+
+function home(){
+    $albums = ORM::for_table('album')->where('section','album')->find_many();
+    $album = $albums[array_rand($albums)];
+    $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    Slim::render(
+        'index.html',
+        array(
+            'album' => $album,
+            'pictures' => $pictures,
+        )
+    );
 }
 
 function album_list($id=null){
     $albums = ORM::for_table('album')->where('section','album')->find_many();
-    if ($id){
-        $album = ORM::for_table('album')->find_one($id);
-    } else {
-        $album = $albums[array_rand($albums)];
-    }
-    
+    $album = is_null($id) ? ORM::for_table('album')->find_one($id) : $albums[array_rand($albums)];
     $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+
     Slim::render( 
-        'index.html',
+        'album.html',
         array(
             'albums' => $albums,
             'album' => $album,
@@ -64,8 +63,8 @@ function album_list($id=null){
 
 function album_form($id=null){
     $albums = ORM::for_table('album')->find_many();
-    $album = ORM::for_table('album')->find_one($id);
-    $pictures = ORM::for_table('picture')->where('album_id', $id)->find_many();
+    $album = is_null($id) ? null : ORM::for_table('album')->find_one($id);
+    $pictures = is_null($id) ? null : ORM::for_table('picture')->where('album_id', $id)->find_many();        
     Slim::render( 
         'album_form.html',
         array(
@@ -108,6 +107,15 @@ function show_picture($id){
     $picture = ORM::for_table('picture')->find_one($id);
     ImageView::thumb($picture->image, $width, $height);
 }
+
+function contact(){
+    Slim::render('contact.html');
+}
+
+function nada() {
+    Slim::render('404.html');
+}
+
 
 Slim::run();
 ?>
