@@ -26,16 +26,18 @@ Slim::delete('/album/:id', 'album_delete');
 Slim::post('/album/', 'album_add');
 Slim::get('/picture/:id*', 'show_picture');
 
+Slim::notFound('custom_not_found_callback');
+
+
 function contact(){
-    $albums = ORM::for_table('album')->find_many();
-    Slim::render( 
-        'index.html',
-        array(
-            'albums' => $albums,
-            'contact' => true,
-        )
-    );
+    Slim::render('index.html');
 }
+
+
+function custom_not_found_callback() {
+    Slim::render('404.html');
+}
+
 
 function album_delete($id){
     Slim::log('Trying to delete: '.$id);
@@ -62,13 +64,8 @@ function album_list($id=null){
 
 function album_form($id=null){
     $albums = ORM::for_table('album')->find_many();
-    if ($id){
-        $album = ORM::for_table('album')->find_one($id);
-        $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
-    } else {
-        $album = null;
-        $pictures = null;
-    }
+    $album = ORM::for_table('album')->find_one($id);
+    $pictures = ORM::for_table('picture')->where('album_id', $id)->find_many();
     Slim::render( 
         'album_form.html',
         array(
@@ -102,7 +99,7 @@ function album_add(){
             }
         }
     }
-    Slim::redirect('/album/new', 301);
+    Slim::redirect('/album/edit', 301);
 }
 
 function show_picture($id){
