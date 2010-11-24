@@ -1,28 +1,5 @@
-<!DOCTYPE html>
-<html lang='es'>
-<head>
-    <meta charset=utf-8" />
-    <title>Vaivendo - imagens {{title}}</title>
-    <link rel="stylesheet" href="/media/style.css" type="text/css" media="screen" />
-    <script type="text/javascript" language="javascript" src="/media/jquery.js"></script>
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
-        </script>
-    <![endif]-->
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function(){
-            $('#add-picture-field').click(function(){
-                file_input = $('input[type="file"]:first').clone();
-                $('#pictures').append(file_input)
-                              .append($('<br />'));
-                $(file_input).val('')
-                             .focus();
-                return false;
-            })
-        })
-    </script>
-</head>
-<body>
+<section>
+<h1>{{#album}}Editando: {{name}}{{/album}}{{^album}}Novo album{{/album}}</h1>
 
 <form action="/album/{{#album}}?id={{id}}{{/album}}" enctype="multipart/form-data" method="post">
     <p><label for="name">Name</label><input type="text" name="name" value="{{#album}}{{name}}{{/album}}"/></p>
@@ -31,7 +8,7 @@
     <dl>
         <dt><label for="picture[]">Pictures:</label></dt>
         <dd id="pictures">
-            {{#pictures}}<input type="file" name="picture[]" value="{{image}}" /><br />{{/pictures}}
+            {{#pictures}}<img src='/picture/{{id}}?width=150'><br />{{/pictures}}
             {{^pictures}}<input type="file" name="picture[]" value="{{image}}" /><br />{{/pictures}}
         </dd>
         <dd>
@@ -40,5 +17,4 @@
     </dl>
     <p><input type="submit" value="Save" /></p>
 </form>
-
-</body>
+</section>

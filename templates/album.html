@@ -1,0 +1,18 @@
+<ul id="display">
+{{#pictures}}<li ><img src="/picture/{{id}}?height=700" alt="{{id}}" id="{{id}}" height="100%" /></li>{{/pictures}}
+</ul>
+{{#album}}
+<section>
+    <h1>{{name}}</h1>
+    <p>{{description}}</p>
+</section>
+<footer>        
+    <ul id="pictures">
+        {{#pictures}}
+        <li>
+            <a href="#{{id}}" ><img src="/picture/{{id}}?height=25" alt="{{id}} - {{name}}" /></a>
+        </li>
+        {{/pictures}}
+    </ul>
+</footer>
+{{/album}}
