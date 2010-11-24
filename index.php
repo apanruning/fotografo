@@ -28,11 +28,6 @@ Slim::get('/picture/:id*', 'show_picture');
 
 Slim::notFound('nada');
 
-function album_delete($id){
-    Slim::log('Trying to delete: '.$id);
-
-}
-
 function home(){
     $albums = ORM::for_table('album')->where('section','album')->find_many();
     $album = $albums[array_rand($albums)];
@@ -46,17 +41,29 @@ function home(){
     );
 }
 
+function bio(){
+    Slim::render('bio.html');
+}
+
+function shop(){
+    $albums = ORM::for_table('album')->where('section','shop')->find_many();
+    Slim::render('shop.html');
+}
 function album_list($id=null){
     $albums = ORM::for_table('album')->where('section','album')->find_many();
-    $album = is_null($id) ? ORM::for_table('album')->find_one($id) : $albums[array_rand($albums)];
+    if ($id){
+        $album = ORM::for_table('album')->find_one($id);
+    } else {
+        $album = $albums[array_rand($albums)];
+    }
     $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
-
     Slim::render( 
         'album.html',
         array(
             'albums' => $albums,
             'album' => $album,
             'pictures' => $pictures,
+            'section_albums' => true,
         )
     );
 }
@@ -99,6 +106,11 @@ function album_add(){
         }
     }
     Slim::redirect('/album/edit', 301);
+}
+
+function album_delete($id){
+    Slim::log('Trying to delete: '.$id);
+
 }
 
 function show_picture($id){

@@ -19,19 +19,20 @@
                              .focus();
                 return false;
             })
+            
         })
     </script>
 </head>
 <body>
-    <header>
     <h1 id="logo"><a href="/">Viaivendo imagens</a></h1>
+    <header>
     <ul id="nav">
-        <li><a href="/vaivendo">Vaivendo</a></li>
-        <li><a href="/album/">Galerias</a>
+        <li><a href="/vaivendo/" {{#section_shop}}class="selected"{{/section_shop}}>V a i v e n d o</a></li>
+        <li><a href="/album/" {{#section_albums}}class="selected"{{/section_albums}} >G a l e r i a s</a>
           <ul>{{#albums}}<li><a href="/album/{{id}}">{{name}}</a></li>{{/albums}}</ul>
         </li>
-        <li><a href="/autor">Autor</a></li>
-        <li><a href="/contato">Contato</a></li>
+        <li><a href="/autor" {{#section_bio}}class="selected"{{/section_bio}}>A u t o r</a></li>
+        <li><a href="/contato" {{#section_contact}}class="selected"{{/section_contact}}>C o n t a t o</a></li>
     </ul>
     </header>
     {{>content}}
