@@ -28,8 +28,9 @@
     <header>
     <ul id="nav">
         <li><a href="/vaivendo/" {{#section_shop}}class="selected"{{/section_shop}}>V a i v e n d o</a></li>
+          {{#section_shop}}<ul><li><a href="/vaivendo/joja">A loja</a></li><li><a href="/vaivendo/joja">Otra seccion</a></li></ul>{{/section_shop}}
         <li><a href="/album/" {{#section_albums}}class="selected"{{/section_albums}} >G a l e r i a s</a>
-          <ul>{{#albums}}<li><a href="/album/{{id}}">{{name}}</a></li>{{/albums}}</ul>
+          {{#section_albums}}<ul>{{#albums}}<li><a href="/album/{{id}}">{{name}}</a></li>{{/albums}}</ul>{{/section_albums}}
         </li>
         <li><a href="/autor" {{#section_bio}}class="selected"{{/section_bio}}>A u t o r</a></li>
         <li><a href="/contato" {{#section_contact}}class="selected"{{/section_contact}}>C o n t a t o</a></li>
