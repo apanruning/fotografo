@@ -5,6 +5,7 @@
     <title>Vaivendo - imagens {{title}}</title>
     <link rel="stylesheet" href="/media/style.css" type="text/css" media="screen" />
     <script type="text/javascript" language="javascript" src="/media/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/media/cycle.js"></script>
     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
         </script>
@@ -13,13 +14,13 @@
         $(document).ready(function(){
             $('#add-picture-field').click(function(){
                 file_input = $('input[type="file"]:first').clone();
-                $('#pictures').append(file_input)
+                $('#album-pictures').append(file_input)
                               .append($('<br />'));
                 $(file_input).val('')
                              .focus();
                 return false;
-            })
-            
+            });
+            $("#display").cycle({fx: 'fade'});
         })
     </script>
 </head>
@@ -38,6 +39,13 @@
     </header>
     {{>content}}
     <footer> 
+        <ul id="pictures">
+            {{#thumbs}}
+            <li>
+                <a href="#{{id}}" ><img src="/picture/{{id}}?height=30" alt="{{id}} - {{name}}" /></a>
+            </li>
+            {{/thumbs}}
+        </ul>
         <p id="colophon">Vaivendo, de Regivaldo Freitas - Jericoacoara, Ceará, Brasil</p>
         <p id="credit"><a href="http://pojatecreativo.com.ar">potaje creativo</a></p>
     </footer>

@@ -109,36 +109,35 @@ footer a {
 }
 
 #display {
-    position: absolute;
-    top: 0;
-    left: 0;
     z-index: -5;
+    width:100%;
     height:100%;
     overflow: hidden;
     text-align: center;
     background: #000;
     margin: 0;
-    width:100%;
     list-style: none;
 }
-#display li{
-    margin: 0;
+.home li{
+    width:100%;
+}
+.album li{
+    margin: 0 auto;
     height: 80%;
+    width: 80%;
     padding: 4em ;
+
     text-align: center;
     
 }
-#display img {
+.album img {
     border: 1em solid #FFF;
 }
 #pictures {
     overflow: hidden;
-    
-    padding: 0.5em 1em;
+    padding: 0.5em;
     margin: 0;
     width: 100%;
-    position: fixed;
-    bottom: 2em;
     
 }
 #pictures li {
@@ -147,7 +146,7 @@ footer a {
 }
 #pictures a {
     display:block;
-    width:35px;
+    width:30px;
     overflow: hidden;
     border: 2px solid transparent;
 }
@@ -162,9 +161,17 @@ footer a {
     position: absolute;
     bottom: 0;
     right: 0;
+    height:40px;
+    width: 30px;
 }
 #credit a {
     color: #FFF;
+    display: block;
+    background: url(pojo.png) no-repeat;
+    height:40px;
+    width: 30px;
+    text-indent: -9999px;
+    
 }
 /* sections */
 #bio {

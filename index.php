@@ -62,6 +62,7 @@ function album_list($id=null){
         array(
             'albums' => $albums,
             'album' => $album,
+            'thumbs' => $pictures,
             'pictures' => $pictures,
             'section_albums' => true,
         )
@@ -82,8 +83,9 @@ function album_form($id=null){
     );
 }
 
-function album_add(){
+function album_add($id=null){
     $params = Slim::request()->post();
+    Slim::log('Id give: '.$id);
     $album = ORM::for_table('album')->create();
     $album->name = $params['name'];
     $album->section = $params['section'];
