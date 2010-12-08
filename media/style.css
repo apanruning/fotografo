@@ -91,6 +91,9 @@ footer a {
     display: block;
     text-transform: lowercase;
 }
+#nav a:hover {
+    color: #F9AF43;
+}
 #nav .selected {
     color: #F9AF43;
 }

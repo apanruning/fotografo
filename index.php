@@ -17,7 +17,7 @@ Slim::config('log', true);
 
 Slim::get('/', 'home');
 Slim::get('/autor/', 'bio');
-Slim::get('/vaivendo/', 'shop');
+Slim::get('/vaivendo/(:slug)', 'shop');
 Slim::get('/contato/', 'contact');
 Slim::post('/contato/', 'contact_send');
 Slim::get('/album/edit/(:id)', 'album_form');
@@ -45,9 +45,25 @@ function bio(){
     Slim::render('bio.html');
 }
 
-function shop(){
+function shop($slug=null){
     $albums = ORM::for_table('album')->where('section','shop')->find_many();
-    Slim::render('shop.html');
+    if ($slug){
+        $album = ORM::for_table('album')->where('slug',$slug)->find_one();
+    } else {
+        $album = $albums[array_rand($albums)];
+    }
+    $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    Slim::render(
+        'shop.html',
+        array(
+            'albums' => $albums,
+            'album' => $album,
+            'thumbs' => $pictures,
+            'pictures' => $pictures,
+            'section_shop' => true,
+            'title' => $album->name,
+        )
+    );
 }
 function album_list($id=null){
     $albums = ORM::for_table('album')->where('section','album')->find_many();
@@ -65,6 +81,7 @@ function album_list($id=null){
             'thumbs' => $pictures,
             'pictures' => $pictures,
             'section_albums' => true,
+            'title' => $album->name,
         )
     );
 }
@@ -107,7 +124,7 @@ function album_add($id=null){
             }
         }
     }
-    Slim::redirect('/album/edit', 301);
+    Slim::redirect('/album/edit/', 301);
 }
 
 function album_delete($id){
@@ -127,7 +144,7 @@ function contact(){
 }
 
 function nada() {
-    Slim::render('404.html');
+    Slim::render('404.html', array($title => '404 - Nada aqui'));
 }
 
 
