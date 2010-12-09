@@ -143,38 +143,36 @@ footer a {
     width: 100%;
     
 }
-#pictures li {
+.thumb {
     float: left;
     margin: 0 0.25em;
 }
-#pictures a {
+.thumb a {
     display:block;
     width:30px;
     overflow: hidden;
     border: 2px solid transparent;
 }
-#pictures a.selected{
+.thumb a.selected{
     border: 2px solid #EEE;
 }
-#pictures a img {
+.thumb a img {
     border:0;
 }
-
+#colophon {
+    clear:left;
+}
 #credit {
     position: absolute;
     bottom: 0;
     right: 0;
-    height:40px;
-    width: 30px;
+    background: url(pojo.png) no-repeat;
+    padding: 4px 4px 4px 22px ;
 }
 #credit a {
     color: #FFF;
     display: block;
-    background: url(pojo.png) no-repeat;
-    height:40px;
-    width: 30px;
-    text-indent: -9999px;
-    
+
 }
 /* sections */
 #bio {

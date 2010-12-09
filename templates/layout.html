@@ -40,13 +40,11 @@
     </header>
     {{>content}}
     <footer> 
-        <ul id="pictures">
             {{#thumbs}}
-            <li>
+            <div class="thumb">
                 <a href="#{{id}}" ><img src="/picture/{{id}}?height=30" alt="{{id}} - {{name}}" /></a>
-            </li>
+            </div>
             {{/thumbs}}
-        </ul>
         <p id="colophon">Vaivendo, de Regivaldo Freitas - Jericoacoara, Ceará, Brasil</p>
         <p id="credit"><a href="http://pojatecreativo.com.ar">potaje creativo</a></p>
     </footer>
