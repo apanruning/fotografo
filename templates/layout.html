@@ -25,8 +25,8 @@
     </script>
 </head>
 <body>
-    <h1 id="logo"><a href="/">Viaivendo imagens</a></h1>
     <header>
+    <h1 id="logo"><a href="/">Viaivendo imagens</a></h1>
     <ul id="nav">
         <li><a href="/vaivendo/" {{#section_shop}}class="selected"{{/section_shop}}>V a i v e n d o</a>
           {{#section_shop}}<ul>{{#albums}}<li><a href="/vaivendo/{{slug}}">{{name}}</a></li>{{/albums}}</ul>{{/section_shop}}
@@ -40,11 +40,13 @@
     </header>
     {{>content}}
     <footer> 
+            <ul id="thumb-list">
             {{#thumbs}}
-            <div class="thumb">
+            <li class="thumb">
                 <a href="#{{id}}" ><img src="/picture/{{id}}?height=30" alt="{{id}} - {{name}}" /></a>
-            </div>
+            </li>
             {{/thumbs}}
+            </ul>
         <p id="colophon">Vaivendo, de Regivaldo Freitas - Jericoacoara, Ceará, Brasil</p>
         <p id="credit"><a href="http://pojatecreativo.com.ar">potaje creativo</a></p>
     </footer>

@@ -29,6 +29,7 @@ Slim::post('/album/', 'album_add');
 Slim::get('/picture/:id*', 'show_picture');
 
 Slim::notFound('nada');
+Slim::error('roto');
 
 function home(){
     $albums = ORM::for_table('album')->where('section','album')->find_many();
@@ -147,7 +148,9 @@ function contact(){
 function nada() {
     Slim::render('404.html', array($title => '404 - Nada aqui'));
 }
-
+function roto(){
+    Slim::render('404.html', array($title => '500 - error de servidor'));
+}
 
 Slim::run();
 ?>

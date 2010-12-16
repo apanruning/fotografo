@@ -1,9 +1,12 @@
-<ul id="display" class="album">
-{{#pictures}}<li id="{{id}}"><img src="/picture/{{id}}?height=600" alt="{{id}}" height="100%" /></li>{{/pictures}}
-</ul>
 {{#album}}
-<!-- section>
+<div class="album">
+    <div id="description">
     <h1>{{name}}</h1>
     <p>{{description}}</p>
-</section -->
+    <a href="ocultar">ocultar</a>
+    </div>
+    <ul id="display">
+    {{#pictures}}<li id="{{id}}"><img src="/picture/{{id}}?height=600" alt="{{id}}" /></li>{{/pictures}}
+    </ul>
+</div>
 {{/album}}
