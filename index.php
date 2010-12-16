@@ -1,8 +1,10 @@
 <?
 require_once('lib/slim/Slim.php');
-require_once('lib/MustacheView.php');
-require_once('lib/ImageView.php');
 require_once('lib/idiorm.php');
+
+require_once('views/MustacheView.php');
+require_once('views/ImageView.php');
+
 require_once('utils.php');
 require_once('config.php');
 
@@ -129,7 +131,6 @@ function album_add($id=null){
 
 function album_delete($id){
     Slim::log('Trying to delete: '.$id);
-
 }
 
 function show_picture($id){
