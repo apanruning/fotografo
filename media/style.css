@@ -26,30 +26,27 @@ li {
     padding: 0;
 }
 header {
-    position: absolute;
-    width: 100%;
-    background: rgba(0,0,0,0.5);
     overflow: hidden;
-    padding: 1em 0;
-}
-header a {
-    color: #FFF;
+    padding: 0 4em ;
 }
 section {
     background: #FFF;
     color: #333;
-    padding:0;
+    padding: 2em;
     height: 100%;
+    clear: both;
+    position: relative;
 }
-section div {
-    padding: 6em 2em 0;
+#description {
+    position: absolute;
+    right: 1em;
+    width: 30%;
+    padding: 1em;
 }
 footer {
-    position: fixed;
-    bottom:0;
-    width:100%;
-    background: rgba(0,0,0,0.5);
+    padding: 0.5em 4em ;
     font-size: 80%;
+    overflow: hidden;
 }
 footer p {
     padding:0.5em 1em ;
@@ -61,10 +58,8 @@ footer a {
 }
 
 #logo {
-    position: absolute;
-    top:0;
-    left: 0;
-    padding: 0 1em;    
+    float: left;
+    margin: 0.5em 0;
     z-index: 9999;
 }
 #logo a {
@@ -73,23 +68,24 @@ footer a {
     background:url(/media/logo-trans.png) no-repeat;
     text-indent: -9999px;
     height:2.5em;
-    width: 10em;
+    width: 6.5em;
 }
 #nav {
-    float: left;
+    float: right;
     padding: 0;
-    width: 70%;
-    margin: 1em 1em 1em 15em;
+    margin: 2em 0;
     position: relative;
+    width: 70%;
 }
 #nav li {
     float: left;
-    margin: 0 3em;
+    margin: 0 0 0 3em;
     padding: 0;
 }
 #nav a {
     display: block;
     text-transform: lowercase;
+    color: #FFF;
 }
 #nav a:hover {
     color: #F9AF43;
@@ -113,27 +109,12 @@ footer a {
 
 #display {
     z-index: -5;
-    width:100%;
-    height:100%;
-    overflow: hidden;
-    text-align: center;
-    background: #000;
-    margin: 0;
     list-style: none;
-}
-.home li{
-    width:100%;
-}
-.album li{
     margin: 0 auto;
-    height: 80%;
-    width: 80%;
-    padding: 4em ;
-
     text-align: center;
-    
+    width: 100%;
 }
-.album img {
+#display img {
     border: 1em solid #FFF;
 }
 #pictures {
@@ -143,6 +124,10 @@ footer a {
     width: 100%;
     
 }
+#thumb-list {
+    position: fixed;
+    bottom: 2.5em;
+} 
 .thumb {
     float: left;
     margin: 0 0.25em;
@@ -161,11 +146,10 @@ footer a {
 }
 #colophon {
     clear:left;
+    float:left;
 }
 #credit {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    float: right;
     background: url(pojo.png) no-repeat;
     padding: 4px 4px 4px 22px ;
 }
