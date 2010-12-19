@@ -19,7 +19,10 @@
                              .focus();
                 return false;
             });
-            $("#display.home").cycle({fx: 'fade'});
+            $("#display.home").cycle({
+                fx:   'fade',
+                slideResize: false 
+            });
         })
     </script>
 </head>
