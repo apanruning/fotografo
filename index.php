@@ -22,6 +22,7 @@ Slim::get('/vaivendo/', 'shop');
 Slim::get('/vaivendo/shop', 'shop');
 Slim::get('/vaivendo/autor', 'bio');
 Slim::get('/contato/', 'contact');
+Slim::get('/contato/success', 'contact_success');
 Slim::post('/contato/', 'contact_send');
 Slim::get('/album/edit/(:id)', 'album_form');
 Slim::get('/album/(:id)', 'album_list');
@@ -143,7 +144,28 @@ function show_picture($id){
 function contact(){
     Slim::render('contact.html');
 }
+function contact_success(){
+    Slim::render('success.html');
+}
 
+function contact_send(){
+    $params = Slim::request()->post();
+    $from_addr = $params['name']." <"$params['email'].">";
+    $to = "Regivaldo Freitas <regivaldo@hotmail.com >";
+    $subject =  "Novo messagem da nossa web";
+    $body = $params['message'];
+
+    $headers = array ("From" => $from_addr,
+                      "To" => $to,
+                      "Subject" => $subject);
+    $smtp = Mail::factory("smtp", array ('host' => "smtp.webfaction.com",
+                                         'auth' => true,
+                                         'username' => "fotografo_contacto ",
+                                         'password' => $DATABASE_NAME));
+
+    $mail = $smtp->send($to, $headers, $body);
+    Slim::redirect('/contato/success', 301);
+}
 function nada() {
     Slim::render('404.html', array('title' => '404 - Nada aqui'));
 }
