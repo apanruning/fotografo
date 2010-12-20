@@ -2,7 +2,7 @@
 require_once('lib/slim/Slim.php');
 require_once('lib/idiorm.php');
 
-require_once('views/MustacheView.php');
+require_once('views/TwigView.php');
 require_once('views/ImageView.php');
 
 require_once('utils.php');
@@ -12,14 +12,15 @@ ORM::configure('mysql:host=127.0.0.1;dbname='.$DATABASE_NAME);
 ORM::configure('username', $DATABASE_USER);
 ORM::configure('password', $DATABASE_PASS);
 
-Slim::init('MustacheView');
+Slim::init('TwigView');
 
 Slim::config('log', true);
 
 
 Slim::get('/', 'home');
-Slim::get('/autor/', 'bio');
-Slim::get('/vaivendo/(:slug)', 'shop');
+Slim::get('/vaivendo/', 'shop');
+Slim::get('/vaivendo/shop', 'shop');
+Slim::get('/vaivendo/autor', 'bio');
 Slim::get('/contato/', 'contact');
 Slim::post('/contato/', 'contact_send');
 Slim::get('/album/edit/(:id)', 'album_form');
@@ -45,21 +46,19 @@ function home(){
 }
 
 function bio(){
-    Slim::render('bio.html');
+    Slim::render('bio.html',
+            array(
+            'section_shop' => true,
+        )
+    );
 }
 
-function shop($slug=null){
-    $albums = ORM::for_table('album')->where('section','shop')->find_many();
-    if ($slug){
-        $album = ORM::for_table('album')->where('slug',$slug)->find_one();
-    } else {
-        $album = $albums[array_rand($albums)];
-    }
+function shop(){
+    $album = ORM::for_table('album')->where('section','shop')->find_one();
     $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
     Slim::render(
         'shop.html',
         array(
-            'albums' => $albums,
             'album' => $album,
             'thumbs' => $pictures,
             'pictures' => $pictures,
@@ -146,10 +145,10 @@ function contact(){
 }
 
 function nada() {
-    Slim::render('404.html', array($title => '404 - Nada aqui'));
+    Slim::render('404.html', array('title' => '404 - Nada aqui'));
 }
 function roto(){
-    Slim::render('404.html', array($title => '500 - error de servidor'));
+    Slim::render('404.html', array('title' => '500 - error de servidor'));
 }
 
 Slim::run();

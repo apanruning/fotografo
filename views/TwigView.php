@@ -45,7 +45,7 @@ class TwigView extends View {
     /**
      * @var string The path to the Twig code directory WITHOUT the trailing slash
      */
-    public static $twigDirectory = null;
+    public static $twigDirectory = 'lib/Twig';
 
     /**
      * @var array The options for the Twig environment, see 

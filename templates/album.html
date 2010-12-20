@@ -1,12 +1,39 @@
-{{#album}}
+{% extends 'layout.html' %}
+{% block wrapper_class %}
+album
+{% endblock %}
+{% block section_album %}
+    <ul>
+    {% for album in albums %}
+    <li><a href="/album/{{album.id}}">{{loop.index}}</a></li> 
+    {% endfor %}
+            </ul>
+{% endblock %}
+{% block content %}
+<section>
 <div class="album">
     <div id="description">
-    <h1>{{name}}</h1>
-    <p>{{description}}</p>
-    <a href="ocultar">ocultar</a>
+    <div id="content">
+    <h1>{{album.name}}</h1>
+    <p>{{album.description}}</p>        
+    </div>
+    <a href="#ocultar" class="handle">ocultar</a>
     </div>
     <ul id="display">
-    {{#pictures}}<li id="{{id}}"><img src="/picture/{{id}}?height=600" alt="{{id}}" /></li>{{/pictures}}
+    {% for picture in pictures %}
+    <li id="{{picture.id}}" {% if loop.first %}class="selected"{% endif %}><img src="/picture/{{picture.id}}?height=600" alt="{{picture.id}}" height="100%"/></li>
+    {% endfor %}
     </ul>
 </div>
-{{/album}}
+</section>
+{% endblock %}
+{% block footer %}
+   <ul id="thumb-list">
+    {% for picture in pictures %}
+    <li class="thumb">
+        <a href="#{{picture.id}}" ><img src="/picture/{{picture.id}}?height=30" alt="{{picture.id}} - {{album.name}}" /></a>
+    </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

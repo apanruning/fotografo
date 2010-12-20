@@ -19,38 +19,59 @@
                              .focus();
                 return false;
             });
-            $("#display.home").cycle({
+            $("#cycle").cycle({
                 fx:   'fade',
-                slideResize: false 
             });
+            $('#description .handle').click(function(){
+                $('#description').toggleClass('collapsed');
+                $('#content').toggle();
+            });
+            $('.thumb a').click(function(){
+                return false;
+            })
+
         })
     </script>
 </head>
 <body>
+    <div id="wrapper" class="{% block wrapper_class %}{% endblock %}">
     <header>
+    <div id="header-wrapper">
     <h1 id="logo"><a href="/">Viaivendo imagens</a></h1>
     <ul id="nav">
-        <li><a href="/vaivendo/" {{#section_shop}}class="selected"{{/section_shop}}>V a i v e n d o</a>
-          {{#section_shop}}<ul>{{#albums}}<li><a href="/vaivendo/{{slug}}">{{name}}</a></li>{{/albums}}</ul>{{/section_shop}}
-        </li>
-        <li><a href="/album/" {{#section_albums}}class="selected"{{/section_albums}} >G a l e r i a s</a>
-          {{#section_albums}}<ul>{{#albums}}<li><a href="/album/{{id}}">{{name}}</a></li>{{/albums}}</ul>{{/section_albums}}
-        </li>
-        <li><a href="/autor" {{#section_bio}}class="selected"{{/section_bio}}>A u t o r</a></li>
-        <li><a href="/contato" {{#section_contact}}class="selected"{{/section_contact}}>C o n t a t o</a></li>
-    </ul>
-    </header>
-    {{>content}}
-    <footer> 
-            <ul id="thumb-list">
-            {{#thumbs}}
-            <li class="thumb">
-                <a href="#{{id}}" ><img src="/picture/{{id}}?height=30" alt="{{id}} - {{name}}" /></a>
-            </li>
-            {{/thumbs}}
+        {% block nav %}
+        <li><a href="/vaivendo/" {% if section_shop %}class="selected"{% endif %}>V a i v e n d o</a>
+            {% if section_shop %}
+            <ul>
+            <li><a href="/vaivendo/shop">a loja</a></li>
+            <li><a href="/vaivendo/autor" >Autor</a></li>
             </ul>
-        <p id="colophon">Vaivendo, de Regivaldo Freitas - Jericoacoara, Ceará, Brasil</p>
-        <p id="credit"><a href="http://pojatecreativo.com.ar">potaje creativo</a></p>
+            {% endif %}
+        </li>
+        <li><a href="/album/" {% if section_album%}class="selected"{% endif %} >G a l e r i a s</a>
+            {% block section_album %}
+            {% endblock %}
+        </li>
+
+        <li><a href="/contato" {% if section_contact %}class="selected"{%  endif %}>C o n t a t o</a></li>        
+        {% endblock %}
+
+    </ul>
+        
+    </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <div id="push"></div>
+    </div>
+    
+    <footer> 
+        {% block footer %}
+        {% endblock %}
+        <div id="footer-wrapper">
+        <div id="colophon">Vaivendo, de Regivaldo Freitas - Jericoacoara, Ceará, Brasil</div>
+        <div id="credit"><a href="http://potajecreativo.com.ar/">potaje creativo</a></div>
+        </div>
     </footer>
 </body>
 </html>

@@ -1,8 +1,13 @@
+{% extends 'layout.html' %}
+{% block wrapper_class %}
+shop
+{% endblock %}
+{% block content %}
 <section id="shop">
     <div>
-    {{#album}}
-        <h1>{{name}}</h1>    
-        <p>{{description}}</p>
-    {{/album}}
+        <h1>{{album.name}}</h1>    
+        <p>{{album.description}}</p>
     </div>
 </section>
+{% endblock %}
+

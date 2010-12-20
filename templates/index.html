@@ -1,5 +1,14 @@
-<section id="home">
-<ul id="display" class="home">
-{{#pictures}}<li id="{{id}}"><img src="/picture/{{id}}?height=600" alt="{{id}}" /></li>{{/pictures}}
+{% extends 'layout.html' %}
+{% block wrapper_class %}
+home
+{% endblock %}
+{% block content %}
+<section>
+<ul id="cycle">
+    {% for picture in pictures %}
+    <li id="{{id}}"><img src="/picture/{{picture.id}}?height=800" alt="{{picture.id}}" width="100%;" /></li>
+    {% endfor %}
 </ul>
 </section>
+{% endblock %}
+
