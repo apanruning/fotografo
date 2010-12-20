@@ -79,7 +79,7 @@ footer a {
 
 }
 #logo {
-    position: absolute;
+    position: fixed;
     top:0;
     left:1em;
     margin: 0.5em 0;
@@ -238,6 +238,7 @@ footer a {
 #wrapper.home{
     overflow:hidden;
 }
+
 #wrapper.home section, #wrapper.album section {
     padding:0;
 
@@ -254,7 +255,10 @@ footer a {
 #wrapper.home {
     background: #000;
 }
-
+#wrapper.form {
+    color:#000;
+    padding:5em 0;
+}
 #wrapper.error section{
     padding: 15em;
     color:#000;

@@ -9,6 +9,7 @@
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    {% block css %}{% endblock %}
     <script type="text/javascript">
         $(document).ready(function(){
             $('#add-picture-field').click(function(){
@@ -26,11 +27,11 @@
                 $('#description').toggleClass('collapsed');
                 $('#content').toggle();
             });
-            function fade(){
+            function fadeHeader(){
                 $('#header-wrapper').fadeOut('slow');
                 console.log('faded');
             };
-            window.setTimeout(fade, 1000)
+            window.setTimeout(fadeHeader, 1000)
             
             $('header').hover(function(){
                $('#header-wrapper').fadeIn();
