@@ -150,7 +150,7 @@ function contact_success(){
 
 function contact_send(){
     $params = Slim::request()->post();
-    $from_addr = $params['name']." <"$params['email'].">";
+    $from_addr = $params['name']." <".$params['email'].">";
     $to = "Regivaldo Freitas <regivaldo@hotmail.com >";
     $subject =  "Novo messagem da nossa web";
     $body = $params['message'];

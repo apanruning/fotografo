@@ -38,15 +38,16 @@ blockquote {
 }
 header {
     overflow: hidden;
-    background:rgba(0, 0, 0, 0.5);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000050,endColorstr=#00000050);
     position:fixed;
     top: 0;
     z-index: 199;
     width:100%;
+    height:5em;
 }
 #header-wrapper {
-    padding: 0 4em ;
+    padding: 2em 4em 3em;
+    background:rgba(0, 0, 0, 0.5);
 }
 section {
     padding: 2em;
@@ -78,7 +79,9 @@ footer a {
 
 }
 #logo {
-    float: left;
+    position: absolute;
+    top:0;
+    left:1em;
     margin: 0.5em 0;
     z-index: 9999;
 }
@@ -91,9 +94,8 @@ footer a {
     width: 6.5em;
 }
 #nav {
-    float: left;
     padding: 0;
-    margin: 2em 0;
+    margin-left:5em;;
     position: relative;
     width: 70%;
 }
@@ -188,6 +190,7 @@ footer a {
     width:100%;
     height:80%;
     padding: 3em 0;
+    margin-bottom: 3em;
 }
 #display img {
     border: 13px solid #FFF;
@@ -235,14 +238,14 @@ footer a {
 #wrapper.home{
     overflow:hidden;
 }
-#wrapper.home section {
+#wrapper.home section, #wrapper.album section {
     padding:0;
 
 }
 #wrapper.album {
     background:#000;
-
 }
+
 #wrapper.bio section, #wrapper.contact section{
     padding:10em;
     margin: 0 auto;
