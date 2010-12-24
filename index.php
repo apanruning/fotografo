@@ -57,7 +57,12 @@ function bio(){
 
 function shop(){
     $album = ORM::for_table('album')->where('section','shop')->find_one();
-    $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    if ($album){
+        $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    }else{
+        $pictures = false;
+    }
+
     Slim::render(
         'shop.html',
         array(
@@ -65,7 +70,7 @@ function shop(){
             'thumbs' => $pictures,
             'pictures' => $pictures,
             'section_shop' => true,
-            'title' => $album->name,
+            'title' => "A loja",
         )
     );
 }
@@ -119,7 +124,7 @@ function album_form($id=null){
 
 function album_add($id=null){
     $params = Slim::request()->post();
-    Slim::log('Id give: '.$id);
+    Slim::log('Id given: '.$id);
     $album = ORM::for_table('album')->create();
     $album->name = $params['name'];
     $album->section = $params['section'];
