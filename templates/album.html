@@ -1,18 +1,5 @@
 {% extends 'layout.html' %}
 {% block wrapper_class %}album{% endblock %}
-{% block onload %}
-            function fadeHeader(){
-                $('.fade').fadeOut('slow');
-                console.log('faded');
-            };
-            window.setTimeout(fadeHeader, 1000)
-            $('.fade-wrapper').hover(function(){
-               $('.fade').fadeIn();
-            }, function(){
-               $('.fade').fadeOut('slow');
-            })
-            
-{% endblock %}
 {% block section_album %}
     <ul>
     {% for album in albums %}
@@ -21,7 +8,7 @@
     </ul>
 {% endblock %}
 {% block content %}
-<section>
+<section class="nopadding">
 <div>
     <div id="description">
     <div id="content">

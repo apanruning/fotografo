@@ -1,22 +1,7 @@
 {% extends 'layout.html' %}
-{% block wrapper_class %}
-shop
-{% endblock %}
-{% block onload %}
-            function fadeHeader(){
-                $('.fade').fadeOut('slow');
-                console.log('faded');
-            };
-            window.setTimeout(fadeHeader, 1000)
-            $('.fade-wrapper').hover(function(){
-               $('.fade').fadeIn();
-            }, function(){
-               $('.fade').fadeOut('slow');
-            })
-            
-{% endblock %}
+{% block wrapper_class %}shop{% endblock %}
 {% block content %}
-<section>
+<section class="nopadding">
 <div>
     <ul id="display">
     {% for picture in pictures %}
