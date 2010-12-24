@@ -28,6 +28,10 @@
                 $('#description').toggleClass('collapsed');
                 $('#content').toggle();
             });
+            $('.text').lousyField()
+            $('form').submit(function(){
+                $(this).find('.text').noCrap()
+            })
             {% block onload %}
             {% endblock %}
         })
