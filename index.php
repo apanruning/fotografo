@@ -35,14 +35,11 @@ Slim::notFound('nada');
 Slim::error('roto');
 
 function home(){
-    $albums = ORM::for_table('album')->where('section','album')->find_many();
-    $album = $albums[array_rand($albums)];
-    $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
+    $album = ORM::for_table('album')->where('section','home')->find_one();
     Slim::render(
         'index.html',
         array(
             'album' => $album,
-            'pictures' => $pictures,
         )
     );
 }
