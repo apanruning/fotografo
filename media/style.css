@@ -30,6 +30,9 @@ p {
     margin: 1em auto;
     clear:both;
 }
+a {
+    color: #F9AF43;
+}
 blockquote {
     text-align: right;
     float: right;
@@ -202,7 +205,7 @@ footer a {
     text-align: center;
     font-weight: bold;
     text-decoration: none;
-    padding: 2em 0;
+    padding: 1em 0;
 }
 .monoculo:hover a{
     display: block;
