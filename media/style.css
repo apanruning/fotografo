@@ -50,21 +50,23 @@ header {
     background:rgba(0, 0, 0, 0.5);
 }
 section {
-    padding: 2em;
-    
+    padding: 6em 2em 4em;
+    width:70em;
+    margin: 0 auto;
 }
 
 footer {
     padding: 0;
     font-size: 80%;
     clear:both;
-    background:rgba(0, 0, 0, 0.5);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000050,endColorstr=#00000050);
     position: fixed;
     bottom:0;
     width: 100%;
+    height:3em;
 }
 #footer-wrapper {
+    background:rgba(0, 0, 0, 0.5);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000050,endColorstr=#00000050);
     padding:0.5em 1em ;
     margin: 0;
     overflow:hidden;
@@ -75,8 +77,8 @@ footer a {
 }
 #wrapper {
 	min-height: 100%;
-	background:#FFF;
-
+	background:#000;
+    color: #FFF;
 }
 #logo {
     position: fixed;
@@ -88,7 +90,7 @@ footer a {
 #logo a {
     text-decoration: none;
     display:block;
-    background:url(/media/logo-trans.png) no-repeat;
+    background:url(/media/logo.png) no-repeat;
     text-indent: -9999px;
     height:2.5em;
     width: 6.5em;
@@ -177,23 +179,53 @@ footer a {
     outline: 0;
     background: url(/media/about.png) no-repeat bottom left;
 }
+
+#album-list {
+    width: 35em;
+}
+.monoculo {
+    float:right;
+    width: 93px;
+    height:82px;
+    background: url(/media/monoculo.png) no-repeat top left;
+    margin: 2em;
+}
+.monoculo:hover {
+    background: none;
+}
+.monoculo span {
+    vertical-align: center;
+}
+.monoculo a {
+    color: #F9AF43;
+    display:none;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 2em 0;
+}
+.monoculo:hover a{
+    display: block;
+}
+#album-list li {
+    float:left;
+    width: 93px;
+    height:82px;
+    background: url(/media/monoculo.png) no-repeat top left;
+}
+
 #display {
     list-style: none;
     text-align: center;
     position: relative;
-    height: 626px;
     z-index:0;
     overflow: hidden;
 }
 #display li {
     margin: 0 auto;
+    padding: 2em 0;
     width:100%;
-    height:80%;
-    padding: 3em 0;
-    margin-bottom: 3em;
-}
-#display img {
-    border: 13px solid #FFF;
+    height:35em;
 }
 #cycle{
     height:100%;
@@ -213,18 +245,17 @@ footer a {
     
 }
 #thumb-list {
-    position: absolute;
-    top: -3.5em;
+    position: fixed;
+    bottom: 3em;
     z-index:3;
+    width: 100%;
+    text-align: center;
 } 
 .thumb {
-    float: left;
+    display: inline;
     margin: 0 0.25em;
 }
 .thumb a {
-    display:block;
-    width:30px;
-    overflow: hidden;
     border: 2px solid transparent;
 }
 .thumb a.selected{
@@ -235,41 +266,48 @@ footer a {
 }
 /* sections */
 
-#wrapper.home{
+#wrapper.home section{
     overflow:hidden;
+    padding: 0;
+    width:auto;
+}
+#wrapper.contact section{
+    width: 30em;
+    padding: 10em;
+}
+#wrapper.contact blockquote, #wrapper.contact p {
+    text-align: center;
+    float:none;
+}
+#wrapper.contact blockquote {
+    width: 140%;
+    margin: 0 -20% 2em;    
+    font-weight: bold;
 }
 
-#wrapper.home section, #wrapper.album section {
-    padding:0;
-
-}
-#wrapper.album {
-    background:#000;
-}
-
-#wrapper.bio section, #wrapper.contact section{
-    padding:10em;
-    margin: 0 auto;
-    color: #000;
-}
-#wrapper.home {
-    background: #000;
-}
-#wrapper.form {
-    color:#000;
+#wrapper.form section {
     padding:5em 0;
 }
 #wrapper.error section{
     padding: 15em;
-    color:#000;
 }
 
-
+.clear {
+    clear: both;
+    display: block;
+}
 /* forms */
-form {
-    padding: 1em;
+form li{
+    margin-bottom: 1em;
 }
 label {
     display:block;
 }
-
+.text {
+    border: 1px solid #CCC;
+    font: 13px 'Trebuchet MS', 'Calibri', 'Droid Sans', sans-serif;   
+    padding: 0.2em;
+}
+.text:focus{
+    border: 1px solid #F9AF43;
+}

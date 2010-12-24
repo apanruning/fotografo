@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/media/style.css" type="text/css" media="screen" />
     <script type="text/javascript" src="/media/jquery.js"></script>
     <script type="text/javascript" src="/media/cycle.js"></script>
+    <script type="text/javascript" src="/media/forms.js"></script>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -28,15 +29,18 @@
                 $('#content').toggle();
             });
             function fadeHeader(){
-                $('#header-wrapper').fadeOut('slow');
+                $('.fade').fadeOut('slow');
                 console.log('faded');
             };
             window.setTimeout(fadeHeader, 1000)
-            
-            $('header').hover(function(){
-               $('#header-wrapper').fadeIn();
+            $('.text').lousyField()
+            $('form').submit(function(){
+                $(this).find('.text').noCrap()
+            })
+            $('.fade-wrapper').hover(function(){
+               $('.fade').fadeIn();
             }, function(){
-               $('#header-wrapper').fadeOut('slow');
+               $('.fade').fadeOut('slow');
             })
         })
     </script>
@@ -44,8 +48,8 @@
 <body>
     <div id="wrapper" class="{% block wrapper_class %}{% endblock %}">
     <h1 id="logo"><a href="/">Viaivendo imagens</a></h1>
-    <header>
-    <div id="header-wrapper">
+    <header class="fade-wrapper">
+    <div id="header-wrapper" class="fade">
     <ul id="nav">
         {% block nav %}
         <li><a href="/vaivendo/" {% if section_shop %}class="selected"{% endif %}>V a i v e n d o</a>
@@ -73,10 +77,10 @@
     <div id="push"></div>
     </div>
     
-    <footer> 
+    <footer class="fade-wrapper"> 
         {% block footer %}
         {% endblock %}
-        <div id="footer-wrapper">
+        <div id="footer-wrapper" class="fade">
         <div id="colophon">Vaivendo, de Regivaldo Freitas - Jericoacoara, Ceará, Brasil</div>
         <div id="credit"><a href="http://potajecreativo.com.ar/">potaje creativo</a></div>
         </div>

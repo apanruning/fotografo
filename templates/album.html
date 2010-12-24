@@ -7,11 +7,11 @@ album
     {% for album in albums %}
     <li><a href="/album/{{album.id}}">{{loop.index}}</a></li> 
     {% endfor %}
-            </ul>
+    </ul>
 {% endblock %}
 {% block content %}
 <section>
-<div class="album">
+<div>
     <div id="description">
     <div id="content">
     <h1>{{album.name}}</h1>
@@ -26,14 +26,12 @@ album
     </ul>
 </div>
 </section>
-{% endblock %}
-{% block footer %}
-   <ul id="thumb-list">
+<ul id="thumb-list">
     {% for picture in pictures %}
     <li class="thumb">
         <a href="#{{picture.id}}" ><img src="/picture/{{picture.id}}?height=30" alt="{{picture.id}} - {{album.name}}" /></a>
     </li>
     {% endfor %}
-    </ul>
+</ul>
 {% endblock %}
 

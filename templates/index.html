@@ -3,12 +3,12 @@
 home
 {% endblock %}
 {% block content %}
-<section>
+<div>
 <ul id="cycle">
     {% for picture in pictures %}
     <li id="{{id}}"><img src="/picture/{{picture.id}}?height=800" alt="{{picture.id}}" width="100%;" /></li>
     {% endfor %}
 </ul>
-</section>
+</div>
 {% endblock %}
 

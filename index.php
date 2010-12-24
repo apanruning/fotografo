@@ -25,7 +25,8 @@ Slim::get('/contato/', 'contact');
 Slim::get('/contato/success', 'contact_success');
 Slim::post('/contato/', 'contact_send');
 Slim::get('/album/edit/(:id)', 'album_form');
-Slim::get('/album/(:id)', 'album_list');
+Slim::get('/album/', 'album_index');
+Slim::get('/album/:id', 'album_list');
 Slim::delete('/album/:id', 'album_delete');
 Slim::post('/album/', 'album_add');
 Slim::get('/picture/:id*', 'show_picture');
@@ -50,6 +51,7 @@ function bio(){
     Slim::render('bio.html',
             array(
             'section_shop' => true,
+            'title' => 'O autor',
         )
     );
 }
@@ -68,6 +70,19 @@ function shop(){
         )
     );
 }
+
+function album_index(){
+    $albums = ORM::for_table('album')->where('section','album')->find_many();
+    Slim::render('album_index.html',
+            array(
+            'albums' => $albums,
+            'section_albums' => true,
+            'title' => 'Essaios fotograficos',
+
+        )
+    );
+}
+
 function album_list($id=null){
     $albums = ORM::for_table('album')->where('section','album')->find_many();
     if ($id){

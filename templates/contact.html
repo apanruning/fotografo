@@ -4,21 +4,20 @@ contact
 {% endblock %}
 {% block content %}
 <section>
-<div id="services">
+<div>
 <blockquote>
 Todas as imagens estão a venda em papel fotográfico, monóculos, postais e quadros, a Vai-Vendo não vende arquivo digital, faz bem para todos.
 </blockquote>
-<p>Venden monoculos, fotos impresas, cuadros, libros de fotos</p>
-<p>Beco Doce. Jericocoara, Ceará – Brasil</p>
-<p>Fone: (88) 9970-2158 . E-mail: vaivendojeri@gmail.com</p>
-</div>
-<div id="contact-form">
+<p>Venden monoculos, fotos impresas, cuadros, libros de fotos<br />
+Beco Doce. Jericocoara, Ceará – Brasil<br />
+Fone: (88) 9970-2158 . E-mail: vaivendojeri@gmail.com</p>
     <h1>Deixe un mensagem</h1>
     <form action="." method="post">
-        <p><label for="name">Nomem</label><input type="text" name="name" value="" /></p>
-        <p><label for="email">Email</label><input type="text" name="email" value="" /></p>
-        <p><label for="message">Mensagem</label><textarea name="message" rows="8" cols="40"></textarea></p>
-        <p><input type="submit" value="Enviar" /></p>
+    <ul>
+        <li><input type="text" name="email" value="Email" class="text" placeholder="Email"/></li>
+        <li><textarea name="message" rows="8" cols="40" class="text" placeholder="Mensagem">Mensagem</textarea></li>
+        <li><input type="submit" value="Enviar" /></li>
+    </ul>
     </form>
 </div>
 </section>
