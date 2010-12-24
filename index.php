@@ -36,10 +36,12 @@ Slim::error('roto');
 
 function home(){
     $album = ORM::for_table('album')->where('section','home')->find_one();
+    $pictures = ORM::for_table('picture')->where('album_id', $album->id)->find_many();
     Slim::render(
         'index.html',
         array(
             'album' => $album,
+            'pictures' => $pictures,
         )
     );
 }
