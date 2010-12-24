@@ -41,7 +41,7 @@ blockquote {
 }
 header {
     overflow: hidden;
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000050,endColorstr=#00000050);
+
     position:fixed;
     top: 0;
     z-index: 199;
@@ -51,11 +51,13 @@ header {
 #header-wrapper {
     padding: 2em 4em 3em;
     background:rgba(0, 0, 0, 0.5);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000050,endColorstr=#00000050);
 }
 section {
     padding: 6em 2em 4em;
     width:70em;
     margin: 0 auto;
+    position: relative;
 }
 
 footer {
@@ -155,32 +157,45 @@ footer a {
 #contact-form {
     float:left;
 }
-#description {
-
+#description{
     position: absolute;
-    right: 1em;
-    top:10em;
-    width: 20em;
-    padding: 1em;
-    background: #FFF;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.7);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000070,endColorstr=#00000070);
+    padding: 5em;
     z-index:2;
-    color: #000;
 }
+#description strong {
+    text-transform: uppercase;
+}
+#description p {
+    width: 70%;
+    margin: 2em auto;
+    text-align: center;
+}
+
 #description.collapsed{
-    width: 1em;
-    padding:0.5em;
+    width: 93px;
+    height: 82px;
+    top: 10em;
+    right: -3em;
     background: transparent;
 }
 .handle{
     display:block;
     text-align:right;
+    outline: 0;
+    width: 70%;
+    margin: 0 auto;
 }
 .collapsed .handle{
     text-indent: 99999px;
-    height:16px;
-    width: 16px;
-    outline: 0;
-    background: url(/media/about.png) no-repeat bottom left;
+    width: 93px;
+    height: 82px;
+    background: url(/media/monoculo.png) no-repeat bottom left;
+}
+.collapsed .handle:hover {
+    background: url(/media/monoculo.png) no-repeat top left;
 }
 
 #album-list {
