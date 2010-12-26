@@ -1,21 +1,6 @@
 {% extends 'layout.html' %}
 {% block wrapper_class %}home{% endblock %}
-{% block onload %}
-            function fadeHeader(){
-                $('.fade').fadeOut('slow');
-                console.log('faded');
-            };
-            window.setTimeout(fadeHeader, 1000)
-            $('.text').lousyField()
-            $('form').submit(function(){
-                $(this).find('.text').noCrap()
-            })
-            $('.fade-wrapper').hover(function(){
-               $('.fade').fadeIn();
-            }, function(){
-               $('.fade').fadeOut('slow');
-            })
-{% endblock %}
+{% block js %}<script type="text/javascript" src="/media/home.js"></script>{% endblock %}
 {% block content %}
 <div>
 <ul id="cycle">

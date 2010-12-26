@@ -160,12 +160,13 @@ footer a {
     float:left;
 }
 #description{
-    position: absolute;
+    position: fixed;
     height: 100%;
     background:rgba(0, 0, 0, 0.7);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000070,endColorstr=#00000070);
     padding: 5em;
     z-index:2;
+    width: 60em;
 }
 #description strong {
     text-transform: uppercase;
@@ -180,9 +181,11 @@ footer a {
     width: 93px;
     height: 82px;
     top: 10em;
-    right: -3em;
+    right: 3em;
     background: transparent;
+    padding:0;
 }
+
 .handle{
     display:block;
     text-align:right;
@@ -222,6 +225,8 @@ footer a {
     text-align: center;
     font-weight: bold;
     text-decoration: none;
+    width: 93px;
+    height:60px;
     padding: 1em 0;
 }
 .monoculo:hover a{
@@ -266,7 +271,7 @@ footer a {
 }
 #thumb-list {
     position: fixed;
-    bottom: 3em;
+    bottom: 2.5em;
     z-index:3;
     width: 100%;
     text-align: center;
@@ -317,9 +322,13 @@ footer a {
     display: block;
 }
 /* forms */
+form {
+    margin: 2em 0;
+}
 form li{
     margin-bottom: 1em;
 }
+
 label {
     display:block;
 }
