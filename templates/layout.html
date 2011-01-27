@@ -13,7 +13,20 @@
     <script type="text/javascript" src="/media/scrollTo.js"></script>
     <script type="text/javascript" src="/media/forms.js"></script>
     <script type="text/javascript" src="/media/scripts.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21019750-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
     {% block js %}{% endblock %}
+    
 </head>
 <body>
     <div id="wrapper" class="{% block wrapper_class %}{% endblock %}">
