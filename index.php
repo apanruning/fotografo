@@ -7,7 +7,6 @@ require_once('views/ImageView.php');
 
 require_once('utils.php');
 require_once('config.php');
-require_once('Mail.php');
 
 $GLOBALS['pass'] = $MAILBOX_PASSW;
 
@@ -172,23 +171,12 @@ function contact_success(){
 
 function contact_send(){
     $params = Slim::request()->post();
-    $from_addr = "<".$params['email'].">";
     $to = "Mati <maturburu@gmail.com>; Ana <anacomes@gmail.com>";
     $subject =  "Novo messagem da nossa web";
-    $body = $params['message'];
+    $message = $params['message'];
+    $headers = "From: ".$params['email'].">";
+    mail($to, $subject, $message, $headers);
 
-    $headers = array ("From" => $from_addr,
-                      "To" => $to,
-                      "Subject" => $subject);
-
-    $mail_factory = Mail::factory('smtp', array(
-                                       'host' => 'smtp.webfaction.com',
-                                       'auth' => true,
-                                       'username' => 'fotografo_contacto',
-                                       'password' => $GLOBALS['pass'],)
-                                 );
-
-    $mail = $smtp->send($to, $headers, $body);
     Slim::redirect('/contato/success', 301);
 }
 function nada() {
