@@ -171,7 +171,7 @@ function contact_success(){
 
 function contact_send(){
     $params = Slim::request()->post();
-    $to = "Mati <maturburu@gmail.com>; Ana <anacomes@gmail.com>";
+    $to = "Regivaldo Freitas <regivaldo@hotmail.com>;";
     $subject =  "Novo messagem da nossa web";
     $message = $params['message'];
     $headers = "From: ".$params['email'].">";
