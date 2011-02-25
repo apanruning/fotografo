@@ -19,9 +19,22 @@ def index(request):
             )
             
 def album_list(request):
-    queryset = Album.object.filter(section='album')
-    
+    queryset = Album.objects.filter(section='album')
     return list_detail.object_list(
                 request,
-                queryset
+                queryset,
+                extra_context = {
+                    'section' : 'album',
+                }
+            )
+            
+def album_detail(request, object_id):
+    queryset = Album.objects.filter(section='album')
+    return list_detail.object_detail(
+                request,
+                queryset,
+                object_id,
+                extra_context = {
+                    'section' : 'album',
+                }
             )

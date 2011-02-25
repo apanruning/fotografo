@@ -57,7 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'vaivendo.urls'
+ROOT_URLCONF = 'fotografo.urls'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'))
 

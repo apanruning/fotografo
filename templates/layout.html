@@ -35,7 +35,7 @@
     <div id="header-wrapper" class="fade">
     <ul id="nav">
         {% block nav %}
-        <li><a href="/vaivendo/" {% if section_shop %}class="selected"{% endif %}>V a i v e n d o</a>
+        <li><a href="/vaivendo/" {% if section == 'shop' %}class="selected"{% endif %}>V a i v e n d o</a>
             {% if section_shop %}
             <ul>
             <li><a href="/vaivendo/shop">a loja</a></li>
@@ -43,12 +43,12 @@
             </ul>
             {% endif %}
         </li>
-        <li><a href="/album/" {% if section_album%}class="selected"{% endif %} >G a l e r i a s</a>
+        <li><a href="/album/" {% if section == 'album' %}class="selected"{% endif %} >G a l e r i a s</a>
             {% block section_album %}
             {% endblock %}
         </li>
 
-        <li><a href="/contato" {% if section_contact %}class="selected"{%  endif %}>C o n t a t o</a></li>        
+        <li><a href="/contato" {% if section == 'contact' %}class="selected"{%  endif %}>C o n t a t o</a></li>        
         {% endblock %}
 
     </ul>

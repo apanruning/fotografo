@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
 <section id="album-list">
-    {% for album in albums %}
+    {% for album in object_list %}
     <div class="monoculo">
         <a href="/album/{{album.id}}"><span>"{{album.name}}".</span></a>
     </div>
-    {% if loop.index is divisibleby(3) %}
+    {% if forloop.counter|divisibleby:'3' %}
     <br class="clear" />
     {%endif%}
     {% endfor %}

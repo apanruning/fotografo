@@ -8,9 +8,7 @@ urlpatterns = patterns('',
     (r'^$', 'albums.views.index'),
 
     (r'^album/$', 'albums.views.album_list',),
-    (r'^album/(?P<album_id>\d+)$', 'albums.views.album', {'section':'album'}),
-    (r'^shop/$', 'albums.views.album', {'section':'shop'}),
-    (r'^shop/(?P<album_id>\d+)$', 'albums.views.album', {'section':'shop'}),
+    (r'^album/(?P<object_id>\d+)$', 'albums.views.album_detail'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

@@ -1,8 +1,9 @@
 {% extends 'layout.html' %}
+{% load thumbnails %}
 {% block wrapper_class %}album{% endblock %}
 {% block section_album %}
     <ul>
-    {% for album in albums %}
+    {% for album in object_list %}
     <li><a href="/album/{{album.id}}">{{loop.index}}</a></li> 
     {% endfor %}
     </ul>
@@ -11,20 +12,20 @@
 <section class="nopadding">
     <div id="description">
         <div id="content">
-        <p><strong>"{{album.name}}"</strong> {{album.description}}</p>        
+        <p><strong>"{{object.name}}"</strong> {{object.description}}</p>        
         </div>
     <a href="#ocultar" class="handle">ocultar</a>
     </div>
     <ul id="display">
-    {% for picture in pictures %}
-    <li id="{{picture.id}}" {% if loop.first %}class="selected"{% endif %}><img src="/picture/{{picture.id}}?height=600" alt="{{picture.id}}" height="100%"/></li>
+    {% for picture in object.picture_set.all %}
+    <li id="{{picture.id}}" {% if forloop.first %}class="selected"{% endif %}><img src="{{picture.image|thumbnail:'600x600'}}" alt="{{picture.id}}" height="100%"/></li>
     {% endfor %}
     </ul>
 </section>
 <ul id="thumb-list">
-    {% for picture in pictures %}
+    {% for picture in object.picture_set.all %}
     <li class="thumb">
-        <a href="#{{picture.id}}" ><img src="/picture/{{picture.id}}?height=30" alt="{{picture.id}}" /></a>
+        <a href="#{{picture.id}}" ><img src="{{picture.image|thumbnail:'30x30'}}" alt="{{picture.id}}" /></a>
     </li>
     {% endfor %}
 </ul>

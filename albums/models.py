@@ -3,7 +3,7 @@ from django.db import models
 class Album(models.Model):
     name = models.CharField(max_length=60)
     section = models.SlugField()
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, editable = False)
 
     def __unicode__(self):
