@@ -10,9 +10,10 @@ Todas as imagens estão a venda em papel fotográfico, monóculos, postais e qua
 <p>Beco Doce. Jericocoara, Ceará – Brasil<br />
 Fone: (88) 9970-2158 . E-mail: vaivendojeri@gmail.com</p>
 <form action="." method="post">
+    {% csrf_token %}
     <ul>
-        <li><input type="text" name="email" value="Email" class="text" placeholder="Email"/></li>
-        <li><textarea name="message" rows="8" cols="40" class="text" placeholder="Mensagem">Mensagem</textarea></li>
+        <li {% if form.email.errors %}class="error"{% endif %}><input type="text" name="email" value="Email" class="text" placeholder="Email"/></li>
+        <li {% if form.message.errors %}class="error"{% endif %}><textarea name="message" rows="8" cols="40" class="text" placeholder="Mensagem">Mensagem</textarea></li>
         <li><input type="submit" value="Enviar" /></li>
     </ul>
     </form>

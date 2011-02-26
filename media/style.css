@@ -340,3 +340,7 @@ label {
 .text:focus{
     border: 1px solid #F9AF43;
 }
+.error input {
+    background: #E87E03;
+    border: 1px solid #900;
+}
