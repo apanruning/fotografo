@@ -37,7 +37,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
-ADMIN_MEDIA_PREFIX = '/admin_media/'
+ADMIN_MEDIA_PREFIX = '/media/admin_media/'
 
 SECRET_KEY = 'ry$*9ne@iag*4#v4sx$q(7xz^ry)$5(^@w5r9%$xnpe=6itu=$'
 
