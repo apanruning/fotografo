@@ -3,7 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <title>Vaivendo - imagens {{title}}</title>
+    <link rel="icon" 
+      type="image/png" 
+      href="/media/img/favicon.png" />
     <link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen" />
+
     {% block css %}{% endblock %}
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -36,12 +40,9 @@
     <ul id="nav">
         {% block nav %}
         <li><a href="/vaivendo/" {% if section == 'shop' %}class="selected"{% endif %}>V a i v e n d o</a>
-            {% if section_shop %}
-            <ul>
-            <li><a href="/vaivendo/shop">a loja</a></li>
-            <li><a href="/vaivendo/autor" >Autor</a></li>
-            </ul>
-            {% endif %}
+            {% block section_shop %}
+            
+            {% endblock %}
         </li>
         <li><a href="/album/" {% if section == 'album' %}class="selected"{% endif %} >G a l e r i a s</a>
             {% block section_album %}
@@ -64,7 +65,7 @@
         {% endblock %}
         <div id="footer-wrapper" class="fade">
         <div id="colophon">Vaivendo, de Regivaldo Freitas - Jericoacoara, Ceará, Brasil</div>
-        <div id="credit"><a href="http://potajecreativo.com.ar/">potaje creativo</a></div>
+        <div id="credit"><a href="http://potajecreativo.com.ar/" target="blank">potaje creativo</a></div>
         </div>
     </footer>
 </body>

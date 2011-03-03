@@ -33,6 +33,10 @@ p {
 a {
     color: #F9AF43;
 }
+em {
+    color: #F9AF43;
+    font-style: normal;
+}
 blockquote {
     text-align: right;
     float: right;
@@ -144,7 +148,7 @@ footer a {
 }
 #credit {
     float: right;
-    background: url(pojo.png) no-repeat;
+    background: url(../img/pojo.png) no-repeat;
     padding: 4px 4px 4px 22px ;
 }
 #credit a {
@@ -252,6 +256,15 @@ footer a {
     width:100%;
     height:35em;
 }
+.description p{
+    border: 10px solid #FFF;
+    padding: 18% 2em;
+    vertical-align: middle;
+    height:auto;
+    margin: 0 auto;
+    width:90%
+    
+}
 #cycle{
     height:100%;
     width:100%;
@@ -271,17 +284,31 @@ footer a {
 }
 #thumb-list {
     position: fixed;
-    bottom: 2.5em;
+    bottom: 3em;
     z-index:3;
     width: 100%;
     text-align: center;
+    height:20px;
 } 
 .thumb {
-    display: inline;
+    float: left;
     margin: 0 0.25em;
+
 }
 .thumb a {
     border: 2px solid transparent;
+    width: 20px;
+    height: 20px;
+    display: block;
+    overflow:hidden;
+    text-align:center;
+    vertical-align:middle;
+    text-decoration:none;
+    font-size:1.2em;
+    font-weight: bold;
+}
+.thumb a:hover {
+    background: #C60;
 }
 .thumb a.selected{
     border: 2px solid #EEE;

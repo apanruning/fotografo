@@ -9,8 +9,9 @@ urlpatterns = patterns('',
 
     (r'^album/$', 'albums.views.album_list',),
     (r'^album/(?P<object_id>\d+)$', 'albums.views.album_detail'),
-    (r'^vaivendo/$', 'albums.views.shop_list'),
-    (r'^vaivendo/$', 'albums.views.shop_list'),
+    (r'^vaivendo/$', 'albums.views.shop'),
+    (r'^vaivendo/shop$', 'albums.views.shop'),
+    (r'^vaivendo/autor$', 'albums.views.bio'),
     (r'^contato/$', 'albums.views.contact'),
     (r'^obrigado/$', 'albums.views.email_success'),
     # Uncomment the admin/doc line below to enable admin documentation:

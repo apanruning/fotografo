@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
+{% load thumbnails %}
 {% block wrapper_class %}home{% endblock %}
 {% block js %}<script type="text/javascript" src="/media/home.js"></script>{% endblock %}
 {% block content %}
 <div>
 <ul id="cycle">
-    {% for picture in pictures %}
-    <li id="{{picture.id}}"><img src="/picture/{{picture.id}}?height=800" alt="{{picture.id}}" width="100%;" /></li>
+    {% for picture in object_list %}
+        <li id="{{picture.id}}" {% if forloop.first %}class="selected"{% endif %}><img src="{{picture.image|thumbnail:'1400x1200'}}" alt="{{picture.id}}" width="100%;"/></li>
     {% endfor %}
 </ul>
 </div>

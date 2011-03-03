@@ -1,20 +1,35 @@
 {% extends 'layout.html' %}
+{% load thumbnails %}
 {% block wrapper_class %}shop{% endblock %}
+{% block section_shop %}
+<ul>
+    <li><a href="/vaivendo/shop">a loja</a></li>
+    <li><a href="/vaivendo/autor" >Autor</a></li>
+</ul>
+{% endblock %}
 {% block content %}
 <section class="nopadding">
-<div>
     <ul id="display">
-    {% for picture in pictures %}
-    <li id="{{picture.id}}" {% if loop.first %}class="selected"{% endif %}><img src="/picture/{{picture.id}}?height=600" alt="{{picture.id}}" height="100%"/></li>
+    {% for album in object_list %}
+    <li id="{{ album|slugify }}" class="description">
+        <p><em>{{ album.name }}</em> {{ album.description }}</p>
+    </li>
+        {% for picture in album.picture_set.all %}
+    <li id="{{ picture.id }}" {% if forloop.first %}class="selected"{% endif %}><img src="{{picture.image|thumbnail:'600x600'}}" alt="{{picture.id}}" height="100%"/></li>
+        {% endfor %}
     {% endfor %}
     </ul>
-</div>
 </section>
 <ul id="thumb-list">
-    {% for picture in pictures %}
+    {% for album in object_list %}
     <li class="thumb">
-        <a href="#{{picture.id}}" ><img src="/picture/{{picture.id}}?height=30" alt="{{picture.id}} - {{album.name}}" /></a>
+        <a href="#{{ album|slugify }}">{{forloop.counter}}</a>
     </li>
+        {% for picture in album.picture_set.all %}
+    <li class="thumb">
+        <a href="#{{picture.id}}" ><img src="{{picture.image|thumbnail:'30x30'}}" alt="{{picture.id}}" /></a>
+    </li>
+        {% endfor %}
     {% endfor %}
 </ul>
 

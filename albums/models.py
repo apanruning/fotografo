@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 class Album(models.Model):
     name = models.CharField(max_length=60)
@@ -17,3 +18,19 @@ class Picture(models.Model):
     def __unicode__(self):
         return self.image.name
 
+class PictureInLine(admin.TabularInline):
+    model = Picture
+    extra = 1
+
+
+class PictureAdmin(admin.ModelAdmin):
+    list_display = ('image', 'album', 'created')
+    list_filter = ('album', )
+    
+class AlbumAdmin(admin.ModelAdmin):
+    inlines = [PictureInLine]
+    list_display = ('name', 'section', 'created')
+    list_filter = ('section', )
+    
+admin.site.register(Album, AlbumAdmin)
+admin.site.register(Picture, PictureAdmin)
