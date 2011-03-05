@@ -254,14 +254,21 @@ footer a {
     padding: 6em 0 3em;
     width:100%;
 }
-.description p{
-    border: 10px solid #FFF;
-    padding: 18% 2em;
+.description {
+    position: relative;
+    overflow:hidden;
+}
+.middle {
+    top:50%;
     vertical-align: middle;
-    height:auto;
+    display:table-cell;
+    border: 10px solid #FFF;
+}
+.description p{
+    position: relative;
+    vertical-align: middle;
     margin: 0 auto;
-    width:90%
-    
+    width:90%;
 }
 #cycle{
     height:100%;

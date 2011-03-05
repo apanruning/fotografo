@@ -12,7 +12,9 @@
     <ul id="display">
     {% for album in object_list %}
     <li id="{{ album|slugify }}" class="description">
-        <p><em>{{ album.name }}</em> {{ album.description }}</p>
+        <div class="middle">
+        <p><em>{{ album.name }}</em> {{ album.description }}</p>            
+        </div>
     </li>
         {% for picture in album.picture_set.all %}
     <li id="{{ picture.id }}" {% if forloop.first %}class="selected"{% endif %}><img src="{{picture.image|thumbnail:'1400x1200'}}" alt="{{picture.id}}" height="100%"/></li>
