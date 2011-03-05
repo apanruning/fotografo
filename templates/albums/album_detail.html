@@ -18,7 +18,7 @@
     </div>
     <ul id="display">
     {% for picture in object.picture_set.all %}
-    <li id="{{picture.id}}" {% if forloop.first %}class="selected"{% endif %}><img src="{{picture.image|thumbnail:'600x600'}}" alt="{{picture.id}}" height="100%"/></li>
+    <li id="{{picture.id}}" {% if forloop.first %}class="selected"{% endif %}><img src="{{picture.image|thumbnail:'1400x1200'}}" alt="{{picture.id}}" height="100%"/></li>
     {% endfor %}
     </ul>
 </section>

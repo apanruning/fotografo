@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    viewport_height = $(window).height();
+    viewport_width = $(window).height();
+    final_height = viewport_height - $('header').height() - $('footer').height() -50 ;
+
     $('#add-picture-field').click(function(){
         file_input = $('input[type="file"]:first').clone();
         $('#album-pictures').append(file_input)
@@ -26,4 +30,6 @@ $(document).ready(function(){
         $.scrollTo(target, {duration:1000, axis:'y'});
         return false;
     });
+    $('#display img').attr('height', final_height);
+
 })
