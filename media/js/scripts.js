@@ -31,5 +31,5 @@ $(document).ready(function(){
         return false;
     });
     $('#display img').attr('height', final_height);
-
+    $('#display description').attr('height', final_height);
 })
