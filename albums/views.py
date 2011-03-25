@@ -71,7 +71,11 @@ def contact(request,*args,**kwargs):
                 'Novo mensagem da nossa web',
                 form.data['message'],
                 form.data['email'],
-                ['regivaldo@hotmail.com','maturburu@gmail.com', 'anacomes@gmail.com'],
+                [
+                    'vaivendojeri@gmail.com', 
+                    'maturburu@gmail.com', 
+                    'anacomes@gmail.com'
+                ],
             )
             return redirect('/obrigado/')
 
