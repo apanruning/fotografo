@@ -208,6 +208,7 @@ footer a {
 
 #album-list {
     width: 35em;
+    overflow:hidden;
 }
 .monoculo {
     float:right;
