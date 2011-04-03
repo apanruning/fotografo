@@ -6,7 +6,7 @@ TEMPLATE_DEBUG = DEBUG
 BASE_DIR = os.path.dirname(__file__)
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Matías Iturburu', 'maturburu@gmail.com'),
 )
 
 MANAGERS = ADMINS
