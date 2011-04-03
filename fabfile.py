@@ -28,7 +28,7 @@ def development():
 def staging():
     pass
     
-def production(username="mherrero", hosts=["mherrero.webfactional.com"]):
+def production(username="mherrero", hosts=["vaivendo.net"]):
     env.user = username
     env.hosts = hosts
     env.project_name = BASE_DIR.split('/')[-1:].pop()
