@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.conf import settings
-from django.http import HttpRespose
+from django.http import HttpResponse
 admin.autodiscover()
 
 urlpatterns = patterns('',
