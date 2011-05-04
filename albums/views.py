@@ -73,8 +73,6 @@ def contact(request,*args,**kwargs):
                 form.data['email'],
                 [
                     'vaivendojeri@gmail.com', 
-                    'maturburu@gmail.com', 
-                    'anacomes@gmail.com'
                 ],
             )
             return redirect('/obrigado/')
